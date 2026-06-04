@@ -126,22 +126,37 @@ body{
 .how-text{font-size:11.5px;color:var(--muted);line-height:1.45}
 .how-text b{color:var(--ink);font-weight:600}
 
-/* ── INTEL BANNER ── */
+/* ── GST BANNER ── */
 .intel-banner{
   max-width:1280px;margin:0 auto;padding:0 24px 16px
 }
 .intel-inner{
-  background:var(--surface2);border:1px solid var(--line);border-radius:6px;
+  background:var(--amber-dim);border:1px solid rgba(180,83,9,.25);border-radius:6px;
   padding:8px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap
 }
+.gst-icon{font-size:15px;flex:none}
 .intel-text{font-size:11.5px;color:var(--muted);line-height:1.4}
-.intel-text b{color:var(--ink)}
+.intel-text b{color:var(--amber)}
 .intel-pills{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
 .intel-pill{
   font-size:10px;font-weight:500;
-  padding:2px 8px;border-radius:20px;border:1px solid rgba(194,65,12,.2);
-  color:var(--accent);background:var(--accent-dim)
+  padding:2px 8px;border-radius:20px;border:1px solid rgba(180,83,9,.2);
+  color:var(--amber);background:var(--amber-dim)
 }
+
+/* ── QUICK NAV ── */
+.quick-nav{
+  max-width:1280px;margin:0 auto;
+  padding:0 24px 14px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap
+}
+.qn-label{font-size:10.5px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;flex:none}
+.qn-link{
+  font-size:12px;color:var(--accent);text-decoration:none;
+  padding:3px 11px;border:1px solid rgba(194,65,12,.2);border-radius:20px;
+  background:var(--accent-dim);font-weight:500;transition:background .15s;white-space:nowrap
+}
+.qn-link:hover{background:rgba(194,65,12,.15)}
 
 /* ── MAIN LAYOUT ── */
 .main-wrap{max-width:1280px;margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:1fr;gap:24px}
@@ -224,6 +239,8 @@ body{
 }
 .price-row:last-child{border-bottom:none}
 .price-row:hover{background:var(--surface2)}
+.risk-row-high{box-shadow:inset 3px 0 0 var(--amber)}
+.risk-row-medium{box-shadow:inset 3px 0 0 rgba(180,83,9,.3)}
 
 .pr-name{display:flex;flex-direction:column;gap:2px;justify-content:center;padding-right:14px}
 .pr-item-name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3}
@@ -425,8 +442,7 @@ body{
 }
 @media(max-width:540px){
   .hero-title{font-size:20px}
-  .cat-btn-label{display:none}
-  .cat-btn{padding:6px 9px}
+  .cat-btn{padding:5px 8px;font-size:11px}
   .patterns-grid{grid-template-columns:1fr}
   .how-inner{grid-template-columns:1fr}
   .how-step{border-right:none;border-bottom:1px solid var(--line)}
@@ -468,7 +484,7 @@ body{
     <div class="hstat"><span class="hstat-val">64</span><span class="hstat-label">items tracked</span></div>
     <div class="hstat"><span class="hstat-val">11</span><span class="hstat-label">categories</span></div>
     <div class="hstat"><span class="hstat-val">6</span><span class="hstat-label">overcharge patterns</span></div>
-    <div class="hstat"><span class="hstat-val">Building...</span><span class="hstat-label">market data points</span></div>
+    <div class="hstat"><span class="hstat-val">Free</span><span class="hstat-label">always</span></div>
   </div>
 </div>
 
@@ -495,16 +511,25 @@ body{
 
 <div class="intel-banner">
   <div class="intel-inner">
+    <span class="gst-icon">&#9888;</span>
     <div class="intel-text">
-      <b>Powered by L9 AI.</b> Scrapes renovation forums 3x/week, extracts real prices using Claude AI, and autonomously invents new contractor overcharge patterns — validated through a 5-gate quality gauntlet before publishing.
+      <b>GST reminder:</b> Most Singapore renovation quotes are GST-exclusive. Add 9% on top of your contractor&rsquo;s prices when comparing against the benchmarks shown here.
     </div>
     <div class="intel-pills">
-      <span class="intel-pill">Haiku extraction</span>
-      <span class="intel-pill">Sonnet validation</span>
-      <span class="intel-pill">Weekly update</span>
-      <span class="intel-pill">Self-improving</span>
+      <span class="intel-pill">Updated Wednesdays</span>
+      <span class="intel-pill">3&times; weekly data scan</span>
+      <span class="intel-pill">Forum-sourced</span>
+      <span class="intel-pill">Always free</span>
     </div>
   </div>
+</div>
+
+<div class="quick-nav">
+  <span class="qn-label">Jump to:</span>
+  <a class="qn-link" href="#budget-guide">&#8594; Budget Guide</a>
+  <a class="qn-link" href="#patterns">&#8594; Overcharge Patterns</a>
+  <a class="qn-link" href="#glossary">&#8594; Glossary</a>
+  <a class="qn-link" href="#faq">&#8594; FAQ</a>
 </div>
 
 <div class="main-wrap">
@@ -576,7 +601,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="electrical-power_point_13a">
+    <div class="price-row risk-row-high" id="electrical-power_point_13a">
       <div class="pr-name">
         <span class="pr-item-name">Additional Power Point (13A)</span>
         <span class="pr-unit">per point</span>
@@ -602,7 +627,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="electrical-five_pin_socket">
+    </div>    <div class="price-row risk-row-medium" id="electrical-five_pin_socket">
       <div class="pr-name">
         <span class="pr-item-name">5-Pin Socket Point</span>
         <span class="pr-unit">per point</span>
@@ -628,7 +653,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="electrical-lighting_point">
+    </div>    <div class="price-row risk-row-medium" id="electrical-lighting_point">
       <div class="pr-name">
         <span class="pr-item-name">Lighting Point</span>
         <span class="pr-unit">per point</span>
@@ -654,7 +679,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="electrical-ceiling_fan_point">
+    </div>    <div class="price-row risk-row-low" id="electrical-ceiling_fan_point">
       <div class="pr-name">
         <span class="pr-item-name">Ceiling Fan Point</span>
         <span class="pr-unit">per point</span>
@@ -680,7 +705,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="electrical-aircon_dedicated_circuit">
+    </div>    <div class="price-row risk-row-low" id="electrical-aircon_dedicated_circuit">
       <div class="pr-name">
         <span class="pr-item-name">Dedicated Aircon Circuit</span>
         <span class="pr-unit">per circuit</span>
@@ -706,7 +731,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="electrical-db_box_10way">
+    </div>    <div class="price-row risk-row-high" id="electrical-db_box_10way">
       <div class="pr-name">
         <span class="pr-item-name">DB Box Upgrade (10-way)</span>
         <span class="pr-unit">per box</span>
@@ -732,7 +757,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="electrical-db_box_20way">
+    </div>    <div class="price-row risk-row-medium" id="electrical-db_box_20way">
       <div class="pr-name">
         <span class="pr-item-name">DB Box Upgrade (20-way)</span>
         <span class="pr-unit">per box</span>
@@ -758,7 +783,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="electrical-switch_single">
+    </div>    <div class="price-row risk-row-low" id="electrical-switch_single">
       <div class="pr-name">
         <span class="pr-item-name">Switch Replacement (single)</span>
         <span class="pr-unit">per switch</span>
@@ -805,7 +830,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="plumbing-water_point_cold">
+    <div class="price-row risk-row-medium" id="plumbing-water_point_cold">
       <div class="pr-name">
         <span class="pr-item-name">Water Point (Cold Only)</span>
         <span class="pr-unit">per point</span>
@@ -831,7 +856,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="plumbing-water_point_hot_cold">
+    </div>    <div class="price-row risk-row-medium" id="plumbing-water_point_hot_cold">
       <div class="pr-name">
         <span class="pr-item-name">Water Point (Hot + Cold)</span>
         <span class="pr-unit">per pair</span>
@@ -857,7 +882,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="plumbing-basin_tap">
+    </div>    <div class="price-row risk-row-medium" id="plumbing-basin_tap">
       <div class="pr-name">
         <span class="pr-item-name">Basin Tap (Supply + Install)</span>
         <span class="pr-unit">per unit</span>
@@ -883,7 +908,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="plumbing-shower_mixer">
+    </div>    <div class="price-row risk-row-medium" id="plumbing-shower_mixer">
       <div class="pr-name">
         <span class="pr-item-name">Shower Mixer Set (Supply + Install)</span>
         <span class="pr-unit">per set</span>
@@ -909,7 +934,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="plumbing-water_heater_storage">
+    </div>    <div class="price-row risk-row-low" id="plumbing-water_heater_storage">
       <div class="pr-name">
         <span class="pr-item-name">Storage Water Heater (Supply + Install)</span>
         <span class="pr-unit">per unit</span>
@@ -935,7 +960,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="plumbing-water_heater_instant">
+    </div>    <div class="price-row risk-row-low" id="plumbing-water_heater_instant">
       <div class="pr-name">
         <span class="pr-item-name">Instant Water Heater (Supply + Install)</span>
         <span class="pr-unit">per unit</span>
@@ -961,7 +986,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="plumbing-floor_trap">
+    </div>    <div class="price-row risk-row-low" id="plumbing-floor_trap">
       <div class="pr-name">
         <span class="pr-item-name">Floor Trap (Supply + Install)</span>
         <span class="pr-unit">per trap</span>
@@ -1008,7 +1033,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="hacking-floor_tile_hacking">
+    <div class="price-row risk-row-medium" id="hacking-floor_tile_hacking">
       <div class="pr-name">
         <span class="pr-item-name">Floor Tile Hacking</span>
         <span class="pr-unit">per sqft</span>
@@ -1034,7 +1059,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="hacking-wall_tile_hacking">
+    </div>    <div class="price-row risk-row-medium" id="hacking-wall_tile_hacking">
       <div class="pr-name">
         <span class="pr-item-name">Wall Tile Hacking</span>
         <span class="pr-unit">per sqft</span>
@@ -1060,7 +1085,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="hacking-brick_wall_hacking">
+    </div>    <div class="price-row risk-row-low" id="hacking-brick_wall_hacking">
       <div class="pr-name">
         <span class="pr-item-name">Brick/Block Wall Hacking</span>
         <span class="pr-unit">per sqft</span>
@@ -1086,7 +1111,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="hacking-drywall_partition_erect">
+    </div>    <div class="price-row risk-row-medium" id="hacking-drywall_partition_erect">
       <div class="pr-name">
         <span class="pr-item-name">Drywall Partition (Erect New)</span>
         <span class="pr-unit">per sqft</span>
@@ -1112,7 +1137,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="hacking-non_structural_wall_removal">
+    </div>    <div class="price-row risk-row-low" id="hacking-non_structural_wall_removal">
       <div class="pr-name">
         <span class="pr-item-name">Non-Structural Wall Removal</span>
         <span class="pr-unit">per wall</span>
@@ -1159,7 +1184,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="tiling-floor_tiling_standard">
+    <div class="price-row risk-row-medium" id="tiling-floor_tiling_standard">
       <div class="pr-name">
         <span class="pr-item-name">Floor Tiling (Standard, Supply + Lay)</span>
         <span class="pr-unit">per sqft</span>
@@ -1185,7 +1210,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="tiling-wall_tiling_standard">
+    </div>    <div class="price-row risk-row-medium" id="tiling-wall_tiling_standard">
       <div class="pr-name">
         <span class="pr-item-name">Wall Tiling (Standard, Supply + Lay)</span>
         <span class="pr-unit">per sqft</span>
@@ -1211,7 +1236,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="tiling-wet_area_tiling">
+    </div>    <div class="price-row risk-row-low" id="tiling-wet_area_tiling">
       <div class="pr-name">
         <span class="pr-item-name">Wet Area Tiling (Bathroom)</span>
         <span class="pr-unit">per sqft</span>
@@ -1237,7 +1262,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="tiling-mosaic_feature_tiles">
+    </div>    <div class="price-row risk-row-medium" id="tiling-mosaic_feature_tiles">
       <div class="pr-name">
         <span class="pr-item-name">Mosaic / Feature Tiles</span>
         <span class="pr-unit">per sqft</span>
@@ -1263,7 +1288,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="tiling-outdoor_balcony_tiles">
+    </div>    <div class="price-row risk-row-low" id="tiling-outdoor_balcony_tiles">
       <div class="pr-name">
         <span class="pr-item-name">Outdoor / Balcony Tiles</span>
         <span class="pr-unit">per sqft</span>
@@ -1289,7 +1314,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="tiling-regrouting_only">
+    </div>    <div class="price-row risk-row-medium" id="tiling-regrouting_only">
       <div class="pr-name">
         <span class="pr-item-name">Regrouting (Labour Only)</span>
         <span class="pr-unit">per sqft</span>
@@ -1336,7 +1361,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="painting-interior_walls_2coat">
+    <div class="price-row risk-row-high" id="painting-interior_walls_2coat">
       <div class="pr-name">
         <span class="pr-item-name">Interior Walls (2 Coats)</span>
         <span class="pr-unit">per sqft</span>
@@ -1362,7 +1387,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="painting-ceiling_painting">
+    </div>    <div class="price-row risk-row-high" id="painting-ceiling_painting">
       <div class="pr-name">
         <span class="pr-item-name">Ceiling Painting (2 Coats)</span>
         <span class="pr-unit">per sqft</span>
@@ -1388,7 +1413,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="painting-full_4room_hdb">
+    </div>    <div class="price-row risk-row-high" id="painting-full_4room_hdb">
       <div class="pr-name">
         <span class="pr-item-name">Full Paint Job (4-Room HDB)</span>
         <span class="pr-unit">lump sum</span>
@@ -1414,7 +1439,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="painting-full_5room_hdb">
+    </div>    <div class="price-row risk-row-high" id="painting-full_5room_hdb">
       <div class="pr-name">
         <span class="pr-item-name">Full Paint Job (5-Room HDB)</span>
         <span class="pr-unit">lump sum</span>
@@ -1440,7 +1465,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="painting-feature_wall">
+    </div>    <div class="price-row risk-row-medium" id="painting-feature_wall">
       <div class="pr-name">
         <span class="pr-item-name">Feature Wall (Special Finish)</span>
         <span class="pr-unit">per sqft</span>
@@ -1487,7 +1512,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="carpentry-built_in_wardrobe">
+    <div class="price-row risk-row-high" id="carpentry-built_in_wardrobe">
       <div class="pr-name">
         <span class="pr-item-name">Built-In Wardrobe</span>
         <span class="pr-unit">per linear ft</span>
@@ -1513,7 +1538,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="carpentry-kitchen_cabinet_full">
+    </div>    <div class="price-row risk-row-high" id="carpentry-kitchen_cabinet_full">
       <div class="pr-name">
         <span class="pr-item-name">Kitchen Cabinet (Top + Bottom)</span>
         <span class="pr-unit">per linear ft</span>
@@ -1539,7 +1564,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="carpentry-kitchen_cabinet_bottom">
+    </div>    <div class="price-row risk-row-medium" id="carpentry-kitchen_cabinet_bottom">
       <div class="pr-name">
         <span class="pr-item-name">Kitchen Cabinet (Bottom Only)</span>
         <span class="pr-unit">per linear ft</span>
@@ -1565,7 +1590,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="carpentry-shoe_cabinet">
+    </div>    <div class="price-row risk-row-medium" id="carpentry-shoe_cabinet">
       <div class="pr-name">
         <span class="pr-item-name">Shoe Cabinet (Built-In)</span>
         <span class="pr-unit">per unit</span>
@@ -1591,7 +1616,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="carpentry-tv_console">
+    </div>    <div class="price-row risk-row-medium" id="carpentry-tv_console">
       <div class="pr-name">
         <span class="pr-item-name">TV Console (Built-In)</span>
         <span class="pr-unit">per unit</span>
@@ -1617,7 +1642,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="carpentry-study_desk">
+    </div>    <div class="price-row risk-row-low" id="carpentry-study_desk">
       <div class="pr-name">
         <span class="pr-item-name">Study Desk (Built-In)</span>
         <span class="pr-unit">per unit</span>
@@ -1643,7 +1668,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="carpentry-feature_shelving">
+    </div>    <div class="price-row risk-row-low" id="carpentry-feature_shelving">
       <div class="pr-name">
         <span class="pr-item-name">Feature / Display Shelving</span>
         <span class="pr-unit">per linear ft</span>
@@ -1690,7 +1715,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="false_ceiling-gypsum_ceiling">
+    <div class="price-row risk-row-medium" id="false_ceiling-gypsum_ceiling">
       <div class="pr-name">
         <span class="pr-item-name">Gypsum Board Ceiling</span>
         <span class="pr-unit">per sqft</span>
@@ -1716,7 +1741,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="false_ceiling-l_box_cove">
+    </div>    <div class="price-row risk-row-medium" id="false_ceiling-l_box_cove">
       <div class="pr-name">
         <span class="pr-item-name">L-Box Lighting Cove</span>
         <span class="pr-unit">per linear run</span>
@@ -1742,7 +1767,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="false_ceiling-cove_with_led">
+    </div>    <div class="price-row risk-row-low" id="false_ceiling-cove_with_led">
       <div class="pr-name">
         <span class="pr-item-name">Cove Lighting (LED Strip Included)</span>
         <span class="pr-unit">per linear run</span>
@@ -1768,7 +1793,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="false_ceiling-recessed_cutout">
+    </div>    <div class="price-row risk-row-low" id="false_ceiling-recessed_cutout">
       <div class="pr-name">
         <span class="pr-item-name">Recessed Lighting Cutout</span>
         <span class="pr-unit">per cutout</span>
@@ -1815,7 +1840,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="flooring-vinyl_planks">
+    <div class="price-row risk-row-medium" id="flooring-vinyl_planks">
       <div class="pr-name">
         <span class="pr-item-name">Vinyl Planks (Supply + Install)</span>
         <span class="pr-unit">per sqft</span>
@@ -1841,7 +1866,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="flooring-laminate_flooring">
+    </div>    <div class="price-row risk-row-low" id="flooring-laminate_flooring">
       <div class="pr-name">
         <span class="pr-item-name">Laminate Flooring (Supply + Install)</span>
         <span class="pr-unit">per sqft</span>
@@ -1867,7 +1892,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="flooring-engineered_timber">
+    </div>    <div class="price-row risk-row-low" id="flooring-engineered_timber">
       <div class="pr-name">
         <span class="pr-item-name">Engineered Timber (Supply + Install)</span>
         <span class="pr-unit">per sqft</span>
@@ -1893,7 +1918,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="flooring-solid_timber">
+    </div>    <div class="price-row risk-row-low" id="flooring-solid_timber">
       <div class="pr-name">
         <span class="pr-item-name">Solid Timber Flooring (Supply + Install)</span>
         <span class="pr-unit">per sqft</span>
@@ -1919,7 +1944,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="flooring-epoxy_flooring">
+    </div>    <div class="price-row risk-row-medium" id="flooring-epoxy_flooring">
       <div class="pr-name">
         <span class="pr-item-name">Epoxy Flooring (Supply + Install)</span>
         <span class="pr-unit">per sqft</span>
@@ -1966,7 +1991,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="aircon-system_2">
+    <div class="price-row risk-row-medium" id="aircon-system_2">
       <div class="pr-name">
         <span class="pr-item-name">System 2 (2 Fancoils, Supply + Install)</span>
         <span class="pr-unit">full system</span>
@@ -1992,7 +2017,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="aircon-system_3">
+    </div>    <div class="price-row risk-row-medium" id="aircon-system_3">
       <div class="pr-name">
         <span class="pr-item-name">System 3 (3 Fancoils, Supply + Install)</span>
         <span class="pr-unit">full system</span>
@@ -2018,7 +2043,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="aircon-system_4">
+    </div>    <div class="price-row risk-row-medium" id="aircon-system_4">
       <div class="pr-name">
         <span class="pr-item-name">System 4 (4 Fancoils, Supply + Install)</span>
         <span class="pr-unit">full system</span>
@@ -2044,7 +2069,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="aircon-gas_top_up">
+    </div>    <div class="price-row risk-row-high" id="aircon-gas_top_up">
       <div class="pr-name">
         <span class="pr-item-name">Gas Top-Up (R32 / R410A)</span>
         <span class="pr-unit">per unit</span>
@@ -2070,7 +2095,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="aircon-general_service">
+    </div>    <div class="price-row risk-row-low" id="aircon-general_service">
       <div class="pr-name">
         <span class="pr-item-name">General Servicing</span>
         <span class="pr-unit">per unit</span>
@@ -2096,7 +2121,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="aircon-chemical_overhaul">
+    </div>    <div class="price-row risk-row-high" id="aircon-chemical_overhaul">
       <div class="pr-name">
         <span class="pr-item-name">Chemical Overhaul</span>
         <span class="pr-unit">per unit</span>
@@ -2143,7 +2168,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="bathroom-full_bathroom_hdb">
+    <div class="price-row risk-row-medium" id="bathroom-full_bathroom_hdb">
       <div class="pr-name">
         <span class="pr-item-name">Full HDB Bathroom Renovation</span>
         <span class="pr-unit">per bathroom</span>
@@ -2169,7 +2194,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="bathroom-partial_reno_tiling">
+    </div>    <div class="price-row risk-row-low" id="bathroom-partial_reno_tiling">
       <div class="pr-name">
         <span class="pr-item-name">Partial Reno (Tiling + Sanitary Only)</span>
         <span class="pr-unit">per bathroom</span>
@@ -2195,7 +2220,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="bathroom-toilet_bowl">
+    </div>    <div class="price-row risk-row-medium" id="bathroom-toilet_bowl">
       <div class="pr-name">
         <span class="pr-item-name">Toilet Bowl (Supply + Install)</span>
         <span class="pr-unit">per unit</span>
@@ -2221,7 +2246,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="bathroom-vanity_with_basin">
+    </div>    <div class="price-row risk-row-low" id="bathroom-vanity_with_basin">
       <div class="pr-name">
         <span class="pr-item-name">Vanity with Basin (Supply + Install)</span>
         <span class="pr-unit">per unit</span>
@@ -2247,7 +2272,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="bathroom-shower_screen">
+    </div>    <div class="price-row risk-row-low" id="bathroom-shower_screen">
       <div class="pr-name">
         <span class="pr-item-name">Shower Screen (Tempered Glass)</span>
         <span class="pr-unit">per set</span>
@@ -2294,7 +2319,7 @@ body{
     <div class="pth-meta">Trend / Risk / Data</div>
   </div>
   <div class="price-rows">
-    <div class="price-row" id="kitchen-full_kitchen_hdb">
+    <div class="price-row risk-row-medium" id="kitchen-full_kitchen_hdb">
       <div class="pr-name">
         <span class="pr-item-name">Full Kitchen Renovation (HDB)</span>
         <span class="pr-unit">lump sum</span>
@@ -2320,7 +2345,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="kitchen-kitchen_cabinets_only">
+    </div>    <div class="price-row risk-row-high" id="kitchen-kitchen_cabinets_only">
       <div class="pr-name">
         <span class="pr-item-name">Kitchen Cabinets Only</span>
         <span class="pr-unit">lump sum</span>
@@ -2346,7 +2371,7 @@ body{
         <span class="meta-risk risk-high">&#9888; Often overcharged</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="kitchen-countertop_solid_surface">
+    </div>    <div class="price-row risk-row-low" id="kitchen-countertop_solid_surface">
       <div class="pr-name">
         <span class="pr-item-name">Countertop — Solid Surface</span>
         <span class="pr-unit">per linear ft</span>
@@ -2372,7 +2397,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="kitchen-countertop_quartz">
+    </div>    <div class="price-row risk-row-medium" id="kitchen-countertop_quartz">
       <div class="pr-name">
         <span class="pr-item-name">Countertop — Quartz</span>
         <span class="pr-unit">per linear ft</span>
@@ -2398,7 +2423,7 @@ body{
         <span class="meta-risk risk-med">Worth checking</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="kitchen-countertop_marble">
+    </div>    <div class="price-row risk-row-low" id="kitchen-countertop_marble">
       <div class="pr-name">
         <span class="pr-item-name">Countertop — Natural Marble</span>
         <span class="pr-unit">per linear ft</span>
@@ -2424,7 +2449,7 @@ body{
         <span class="meta-risk risk-low">&#10003; Usually fair</span>
         <span class="meta-conf">Starting estimate</span>
       </div>
-    </div>    <div class="price-row" id="kitchen-kitchen_hood_hob">
+    </div>    <div class="price-row risk-row-medium" id="kitchen-kitchen_hood_hob">
       <div class="pr-name">
         <span class="pr-item-name">Kitchen Hood + Hob Set (Supply + Install)</span>
         <span class="pr-unit">per set</span>
@@ -2458,16 +2483,13 @@ body{
   </div>
 
   <!-- OVERCHARGE PATTERNS -->
-  <div class="section-wrap">
-    <div class="section-h">AI-Discovered Contractor Overcharge Patterns — 6 Active</div>
+  <div class="section-wrap" id="patterns">
+    <div class="section-h">&#9888; Red Flags — 6 Contractor Overcharge Patterns to Watch</div>
     <div class="patterns-grid">
 <div class="pattern-card">
   <div class="pattern-header">
-    <div class="pattern-header-left">
-      <span class="pattern-cat">Carpentry</span>
-      <span class="pattern-source">Research Seeded</span>
-    </div>
-    <div class="pattern-prob" title="Probability this pattern results in overcharging">74% overcharge risk</div>
+    <span class="pattern-cat">Carpentry</span>
+    <div class="pattern-prob">74% overcharge risk &middot; avg +28% extra charged</div>
   </div>
   <h3 class="pattern-name">Vague Carpentry Material Specification</h3>
   <p class="pattern-insight">When carpentry quotes omit material specification, contractors frequently substitute lower-grade particleboard instead of moisture-resistant plywood, while charging mid-range prices.</p>
@@ -2475,19 +2497,11 @@ body{
     <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask contractor to specify: board type (MR/moisture-resistant plywood), door material (acrylic/laminate/solid wood), and hardware brand (Blum/Hettich/Hafele).</span>
   </div>
-  <div class="pattern-footer">
-    <span>Avg overcharge: +28%</span>
-    <span>Confidence: 72%</span>
-    <span>2026-06-04</span>
-  </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div class="pattern-header-left">
-      <span class="pattern-cat">Painting</span>
-      <span class="pattern-source">Research Seeded</span>
-    </div>
-    <div class="pattern-prob" title="Probability this pattern results in overcharging">68% overcharge risk</div>
+    <span class="pattern-cat">Painting</span>
+    <div class="pattern-prob">68% overcharge risk &middot; avg +22% extra charged</div>
   </div>
   <h3 class="pattern-name">Painting Charged Per Room Instead of Per SqFt</h3>
   <p class="pattern-insight">Per-room flat rates consistently exceed per-sqft pricing for larger rooms (master bedroom, living room). Common for 5-room HDB where rooms are bigger.</p>
@@ -2495,19 +2509,11 @@ body{
     <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask for a per-sqft rate and calculate total area yourself. Standard HDB wall height is 2.6m — multiply perimeter by height for total sqft.</span>
   </div>
-  <div class="pattern-footer">
-    <span>Avg overcharge: +22%</span>
-    <span>Confidence: 70%</span>
-    <span>2026-06-04</span>
-  </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div class="pattern-header-left">
-      <span class="pattern-cat">Tiling</span>
-      <span class="pattern-source">Research Seeded</span>
-    </div>
-    <div class="pattern-prob" title="Probability this pattern results in overcharging">81% overcharge risk</div>
+    <span class="pattern-cat">Tiling</span>
+    <div class="pattern-prob">81% overcharge risk &middot; avg +15% extra charged</div>
   </div>
   <h3 class="pattern-name">Tile Wastage Overestimation</h3>
   <p class="pattern-insight">Industry standard tile wastage is 8-10%. Contractors quoting 20-25% wastage are padding the material cost. This is most common for floor tiles and large-format tiles.</p>
@@ -2515,19 +2521,11 @@ body{
     <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask contractor to justify any wastage above 10%. For straight-lay patterns 10% is sufficient. Herringbone or diagonal patterns may justify 12-15%.</span>
   </div>
-  <div class="pattern-footer">
-    <span>Avg overcharge: +15%</span>
-    <span>Confidence: 78%</span>
-    <span>2026-06-04</span>
-  </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div class="pattern-header-left">
-      <span class="pattern-cat">Electrical</span>
-      <span class="pattern-source">Research Seeded</span>
-    </div>
-    <div class="pattern-prob" title="Probability this pattern results in overcharging">66% overcharge risk</div>
+    <span class="pattern-cat">Electrical</span>
+    <div class="pattern-prob">66% overcharge risk &middot; avg +35% extra charged</div>
   </div>
   <h3 class="pattern-name">DB Box Upsell for Small Flats</h3>
   <p class="pattern-insight">A 20-way DB box is generally unnecessary for 3 and 4-room HDB flats. Contractors upsell to the larger unit citing 'future-proofing' — the 10-way box handles all standard circuits comfortably.</p>
@@ -2535,19 +2533,11 @@ body{
     <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask your contractor to list all planned circuits. Count them. If under 10, a 10-way DB box is sufficient.</span>
   </div>
-  <div class="pattern-footer">
-    <span>Avg overcharge: +35%</span>
-    <span>Confidence: 68%</span>
-    <span>2026-06-04</span>
-  </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div class="pattern-header-left">
-      <span class="pattern-cat">Aircon</span>
-      <span class="pattern-source">Research Seeded</span>
-    </div>
-    <div class="pattern-prob" title="Probability this pattern results in overcharging">79% overcharge risk</div>
+    <span class="pattern-cat">Aircon</span>
+    <div class="pattern-prob">79% overcharge risk &middot; avg +100% extra charged</div>
   </div>
   <h3 class="pattern-name">Chemical Wash Upsell on Young Aircon Units</h3>
   <p class="pattern-insight">Chemical overhaul is a deep cleaning service necessary every 2-3 years of heavy use. Recommending it for units under 2 years old is almost always unnecessary and is a revenue tactic.</p>
@@ -2555,19 +2545,11 @@ body{
     <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask the technician to show you the state of the evaporator coil. If it is not visibly scaled or clogged, a general service is sufficient.</span>
   </div>
-  <div class="pattern-footer">
-    <span>Avg overcharge: +100%</span>
-    <span>Confidence: 75%</span>
-    <span>2026-06-04</span>
-  </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div class="pattern-header-left">
-      <span class="pattern-cat">Kitchen</span>
-      <span class="pattern-source">Research Seeded</span>
-    </div>
-    <div class="pattern-prob" title="Probability this pattern results in overcharging">71% overcharge risk</div>
+    <span class="pattern-cat">Kitchen</span>
+    <div class="pattern-prob">71% overcharge risk &middot; avg +32% extra charged</div>
   </div>
   <h3 class="pattern-name">Lump Sum Kitchen Quote Without Itemisation</h3>
   <p class="pattern-insight">Unitemised kitchen lump sums make it impossible to compare against market rates. This is most common when ID firms absorb all sub-contractor work under one number — the markup on individual items can reach 40-60%.</p>
@@ -2575,17 +2557,12 @@ body{
     <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Always request a full itemised quote: carpentry (per linear ft), countertop (per linear ft), tiling (per sqft), hacking (per sqft), plumbing (per point), hood/hob (separate). Compare each item against RenoRadar.</span>
   </div>
-  <div class="pattern-footer">
-    <span>Avg overcharge: +32%</span>
-    <span>Confidence: 69%</span>
-    <span>2026-06-04</span>
-  </div>
 </div>
     </div>
   </div>
 
   <!-- BUDGET GUIDE -->
-  <div class="section-wrap">
+  <div class="section-wrap" id="budget-guide">
     <div class="section-h">Quick Budget Reference — Full Renovation by Flat Type</div>
     <div class="budget-table-wrap">
   <table class="budget-table">
@@ -2629,13 +2606,13 @@ body{
   </div>
 
   <!-- GLOSSARY -->
-  <div class="section-wrap">
+  <div class="section-wrap" id="glossary">
     <div class="section-h">Renovation Terms Explained</div>
     <dl class="gloss-grid"><div class="gloss-item"><dt class="gloss-term">DB Box</dt><dd class="gloss-def">Distribution Board. The electrical panel that distributes power to different circuits in your home. Upgrading it adds more circuit capacity.</dd></div><div class="gloss-item"><dt class="gloss-term">PSF / Per SqFt</dt><dd class="gloss-def">Price per square foot. Common unit for tiling, flooring, painting and hacking. Multiply by your room area to get total cost.</dd></div><div class="gloss-item"><dt class="gloss-term">Linear Ft</dt><dd class="gloss-def">Measurement along a straight line. Used for carpentry (wardrobes, kitchen cabinets), countertops and false ceiling runs.</dd></div><div class="gloss-item"><dt class="gloss-term">R32 / R410A</dt><dd class="gloss-def">Types of refrigerant gas used in air conditioning systems. R32 is newer and more eco-friendly. Top-up is only needed if there is a leak.</dd></div><div class="gloss-item"><dt class="gloss-term">Rectified Tiles</dt><dd class="gloss-def">Tiles cut to precise dimensions with sharp edges. Required for large-format tiles and minimal grout lines.</dd></div><div class="gloss-item"><dt class="gloss-term">Waterproofing</dt><dd class="gloss-def">A membrane layer applied under bathroom tiles to prevent water seepage. Critical — never skip it.</dd></div><div class="gloss-item"><dt class="gloss-term">Fancoil</dt><dd class="gloss-def">The indoor unit of a split air conditioning system — the part mounted on your wall or ceiling.</dd></div><div class="gloss-item"><dt class="gloss-term">Chemical Overhaul</dt><dd class="gloss-def">A deep cleaning of the aircon evaporator coil using chemical solution. Only needed every 2-3 years, not every service.</dd></div><div class="gloss-item"><dt class="gloss-term">MR Board</dt><dd class="gloss-def">Moisture-Resistant board. Used in wet areas like kitchen and bathrooms. Budget contractors often substitute standard particleboard.</dd></div><div class="gloss-item"><dt class="gloss-term">Hacking</dt><dd class="gloss-def">Demolition work — removing existing tiles, walls, or structures before new installations. Priced per sqft.</dd></div><div class="gloss-item"><dt class="gloss-term">L-Box</dt><dd class="gloss-def">The recessed cove in a false ceiling that holds LED strip lighting. Creates an indirect lighting effect.</dd></div><div class="gloss-item"><dt class="gloss-term">ID Firm</dt><dd class="gloss-def">Interior Design firm. Full-service renovation companies that design and manage the entire project. Premium pricing but full coordination.</dd></div></dl>
   </div>
 
   <!-- FAQ -->
-  <div class="section-wrap">
+  <div class="section-wrap" id="faq">
     <div class="section-h">Frequently Asked Questions</div>
     <details class="faq-item"><summary class="faq-q">How often is this data updated?</summary><div class="faq-a">The RenoRadar intelligence engine scrapes renovation forums three times a week (Monday, Wednesday, Friday) and updates price benchmarks every Wednesday night. The L9 AI engine also discovers new overcharge patterns weekly.</div></details><details class="faq-item"><summary class="faq-q">Are these prices inclusive of GST?</summary><div class="faq-a">Most renovation contractor quotes in Singapore are GST-exclusive. Add 9% on top of all prices shown here when comparing against your contractor's final invoice.</div></details><details class="faq-item"><summary class="faq-q">Why are there three price tiers?</summary><div class="faq-a">Budget tier reflects direct sub-contractors with no project management overhead. Mid-range covers small renovation firms with some design support. Premium covers full-service ID firms that manage the entire project — you pay for their coordination, not just the work.</div></details><details class="faq-item"><summary class="faq-q">My quote is higher than the Premium tier — is that normal?</summary><div class="faq-a">Not necessarily. Very high quotes can reflect: (1) condo surcharges for management restrictions, (2) unusual scope like structural work, (3) premium material choices, or (4) contractor padding. Use the overcharge patterns above to investigate.</div></details><details class="faq-item"><summary class="faq-q">Should I always go for the cheapest contractor?</summary><div class="faq-a">No. Budget tier contractors are legitimate, but they require more active supervision. Payment terms, material specifications and timeline commitments must all be documented in writing regardless of which tier you choose.</div></details><details class="faq-item"><summary class="faq-q">How do I use this page alongside my actual quote?</summary><div class="faq-a">Open your contractor quote on one screen and RenoRadar on another. Go through your quote line by line. For each item, find the matching category and item here, check which tier your quote falls into, and look at the overcharge risk rating.</div></details>
   </div>
