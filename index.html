@@ -1,0 +1,2675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RenoRadar — Singapore Renovation Price Index 2026</title>
+<meta name="description" content="Live Singapore renovation price benchmarks — electrical, carpentry, tiling, aircon, bathroom and more. Updated weekly by AI. Free to use.">
+<meta property="og:title" content="RenoRadar — Singapore Renovation Price Index">
+<meta property="og:description" content="Live renovation price benchmarks for Singapore. Compare your quote against real market rates before you sign.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adamdegoat.github.io/renoradar/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#070b16;--surface:#0d1628;--surface2:#111f38;
+  --ink:#e8eef7;--muted:#8a99b5;--dim:#5d6b86;
+  --line:rgba(148,163,184,.13);
+  --teal:#06b6d4;--teal-dim:rgba(6,182,212,.12);
+  --green:#22c55e;--green-dim:rgba(34,197,94,.10);
+  --amber:#f59e0b;--amber-dim:rgba(245,158,11,.10);
+  --red:#ef4444;--red-dim:rgba(239,68,68,.10);
+  --purple:#a855f7;--purple-dim:rgba(168,85,247,.10)
+}
+html,body{height:100%;scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 10% -5%,rgba(6,182,212,.10),transparent 60%),
+    radial-gradient(ellipse 700px 500px at 90% 5%,rgba(168,85,247,.08),transparent 60%),
+    linear-gradient(rgba(148,163,184,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(148,163,184,.025) 1px,transparent 1px);
+  background-size:auto,auto,44px 44px,44px 44px;
+  background-attachment:fixed
+}
+
+/* ── HEADER ── */
+.site-header{
+  background:rgba(7,11,22,.92);border-bottom:1px solid var(--line);
+  backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;
+  padding:0 24px
+}
+.header-inner{
+  max-width:1280px;margin:0 auto;padding:14px 0;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap
+}
+.brand-mark{
+  display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;flex:none
+}
+.radar-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(145deg,#061824,#041018);
+  border:1px solid rgba(6,182,212,.35);
+  display:grid;place-items:center;
+  box-shadow:0 0 0 3px rgba(6,182,212,.08),0 8px 24px rgba(0,0,0,.6)
+}
+.brand-text{display:flex;flex-direction:column;gap:1px}
+.brand-name{
+  font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:20px;
+  color:var(--teal);letter-spacing:-.3px;line-height:1
+}
+.brand-tag{font-size:10px;color:var(--dim);font-weight:500;letter-spacing:.5px}
+.header-meta{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-left:auto
+}
+.h-pill{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:1.4px;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;border:1px solid var(--line);
+  color:var(--muted);background:rgba(148,163,184,.05)
+}
+.h-pill.live{color:var(--green);border-color:rgba(34,197,94,.25);background:var(--green-dim)}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}70%{box-shadow:0 0 0 7px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+
+/* ── HERO ── */
+.hero{
+  max-width:1280px;margin:0 auto;padding:52px 24px 40px;
+  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start
+}
+.hero-left{}
+.hero-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px
+}
+.hero-title{
+  font-family:'Space Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-1.5px;
+  color:#dde8f8;margin-bottom:14px
+}
+.hero-title span{color:var(--teal)}
+.hero-sub{
+  font-size:15px;line-height:1.7;color:var(--muted);max-width:560px;margin-bottom:22px
+}
+.hero-sub b{color:#c5d5ee;font-weight:600}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.hstat{display:flex;flex-direction:column;gap:3px}
+.hstat-val{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;
+  color:var(--teal);letter-spacing:-.5px
+}
+.hstat-label{font-size:11px;color:var(--dim);font-weight:500}
+.hero-right{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:20px;min-width:240px;flex:none
+}
+.howtouse-title{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:14px
+}
+.step-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.step-row:last-child{margin-bottom:0}
+.step-num{
+  width:22px;height:22px;border-radius:6px;
+  background:var(--teal-dim);border:1px solid rgba(6,182,212,.3);
+  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
+  color:var(--teal);display:grid;place-items:center;flex:none;margin-top:1px
+}
+.step-text{font-size:12.5px;color:var(--muted);line-height:1.5}
+.step-text b{color:#c5d5ee;font-weight:600}
+
+/* ── HOW IT WORKS BANNER ── */
+.intel-banner{
+  max-width:1280px;margin:0 auto 0;padding:0 24px 24px
+}
+.intel-inner{
+  background:linear-gradient(135deg,rgba(6,182,212,.07),rgba(168,85,247,.05));
+  border:1px solid rgba(6,182,212,.18);border-radius:12px;
+  padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap
+}
+.intel-icon{font-size:20px;flex:none}
+.intel-text{font-size:12.5px;color:var(--muted);line-height:1.5}
+.intel-text b{color:#c5d5ee}
+.intel-pills{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.intel-pill{
+  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;border:1px solid rgba(6,182,212,.2);
+  color:var(--teal);background:var(--teal-dim)
+}
+
+/* ── MAIN LAYOUT ── */
+.main-wrap{max-width:1280px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:1fr;gap:32px}
+
+/* ── CATEGORY NAV ── */
+.cat-nav{
+  display:flex;gap:6px;flex-wrap:wrap;
+  padding:16px;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px
+}
+.cat-btn{
+  display:flex;align-items:center;gap:7px;padding:8px 14px;
+  border-radius:8px;border:1px solid transparent;
+  background:transparent;color:var(--muted);cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:500;
+  transition:all .18s ease;white-space:nowrap
+}
+.cat-btn:hover{background:var(--teal-dim);color:#c5d5ee;border-color:rgba(6,182,212,.2)}
+.cat-btn.active{
+  background:var(--teal-dim);color:var(--teal);
+  border-color:rgba(6,182,212,.35);font-weight:600
+}
+.cat-btn-icon{font-size:14px}
+.cat-btn-label{font-size:12.5px}
+
+/* ── PRICE TABLE ── */
+.price-table-wrap{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  overflow:hidden
+}
+.panel-header{padding:20px 24px;border-bottom:1px solid var(--line)}
+.panel-title-row{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.panel-title{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;
+  font-size:20px;color:#fff;letter-spacing:-.3px
+}
+.panel-count{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);
+  background:var(--teal-dim);border:1px solid rgba(6,182,212,.2);
+  padding:3px 9px;border-radius:20px
+}
+.panel-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
+.cat-warning{
+  font-size:12.5px;color:rgba(245,158,11,.9);line-height:1.55;
+  background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);
+  border-radius:8px;padding:10px 14px;margin-top:8px
+}
+
+.price-table-header{
+  display:grid;
+  grid-template-columns:1fr 160px 160px 160px 180px;
+  gap:0;padding:10px 24px;
+  background:rgba(148,163,184,.04);
+  border-bottom:1px solid var(--line)
+}
+.pth-name,.pth-budget,.pth-mid,.pth-premium,.pth-meta{
+  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)
+}
+.pth-budget{color:rgba(34,197,94,.7)}
+.pth-mid{color:rgba(56,189,248,.7)}
+.pth-premium{color:rgba(168,85,247,.7)}
+
+.price-rows{}
+.price-row{
+  display:grid;
+  grid-template-columns:1fr 160px 160px 160px 180px;
+  gap:0;padding:14px 24px;
+  border-bottom:1px solid var(--line);
+  transition:background .15s ease
+}
+.price-row:last-child{border-bottom:none}
+.price-row:hover{background:rgba(148,163,184,.03)}
+
+.pr-name{display:flex;flex-direction:column;gap:3px;justify-content:center;padding-right:16px}
+.pr-item-name{font-size:13.5px;font-weight:600;color:#dde8f8;line-height:1.3}
+.pr-unit{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);
+  font-weight:600;letter-spacing:.8px
+}
+.pr-notes{font-size:11px;color:var(--dim);line-height:1.4;margin-top:2px}
+
+.pr-budget,.pr-mid,.pr-premium{
+  display:flex;flex-direction:column;gap:3px;justify-content:center;
+  padding:0 8px
+}
+.tier-label{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase
+}
+.pr-budget .tier-label{color:rgba(34,197,94,.7)}
+.pr-mid .tier-label{color:rgba(56,189,248,.7)}
+.pr-premium .tier-label{color:rgba(168,85,247,.7)}
+.tier-range{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13.5px;
+  letter-spacing:-.3px
+}
+.pr-budget .tier-range{color:#4ade80}
+.pr-mid .tier-range{color:#7dd3fc}
+.pr-premium .tier-range{color:#c084fc}
+.tier-sub{font-size:9.5px;color:var(--dim)}
+
+.pr-meta{
+  display:flex;flex-direction:column;gap:5px;justify-content:center;
+  padding:0 8px
+}
+.trend-up{font-size:11px;font-weight:600;color:#f87171;background:var(--red-dim);border:1px solid rgba(239,68,68,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
+.trend-down{font-size:11px;font-weight:600;color:#4ade80;background:var(--green-dim);border:1px solid rgba(34,197,94,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
+.trend-stable{font-size:11px;font-weight:600;color:var(--muted);background:rgba(148,163,184,.06);border:1px solid var(--line);padding:2px 7px;border-radius:5px;white-space:nowrap}
+.risk-high{font-size:10.5px;font-weight:600;color:var(--amber);background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
+.risk-med{font-size:10.5px;font-weight:600;color:rgba(96,165,250,.9);background:rgba(96,165,250,.07);border:1px solid rgba(96,165,250,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
+.risk-low{font-size:10.5px;font-weight:600;color:rgba(74,222,128,.8);background:var(--green-dim);border:1px solid rgba(34,197,94,.18);padding:2px 7px;border-radius:5px;white-space:nowrap}
+.conf-seed{font-size:10px;color:var(--dim);white-space:nowrap}
+.conf-low{font-size:10px;color:rgba(245,158,11,.6);white-space:nowrap}
+.conf-med{font-size:10px;color:rgba(56,189,248,.7);white-space:nowrap}
+.conf-high{font-size:10px;color:rgba(34,197,94,.8);white-space:nowrap}
+
+/* ── CATEGORY TIPS ── */
+.cat-tips{
+  margin:16px 24px;padding:16px;
+  background:rgba(6,182,212,.04);border:1px solid rgba(6,182,212,.15);border-radius:10px
+}
+.tips-title{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:10px
+}
+.cat-tips ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.cat-tips li{font-size:12.5px;color:var(--muted);line-height:1.55;padding-left:16px;position:relative}
+.cat-tips li::before{content:"→";position:absolute;left:0;color:var(--teal)}
+
+/* ── SECTION HEADERS ── */
+.section-wrap{}
+.section-h{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--dim);
+  margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line)
+}
+
+/* ── PATTERNS ── */
+.patterns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px}
+.pattern-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:18px;transition:border-color .18s
+}
+.pattern-card:hover{border-color:rgba(245,158,11,.3)}
+.pattern-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+.pattern-cat{
+  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
+  letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);
+  background:var(--teal-dim);border:1px solid rgba(6,182,212,.2);
+  padding:2px 8px;border-radius:4px
+}
+.pattern-source{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--dim);
+  padding:2px 8px;border-radius:4px;border:1px solid var(--line)
+}
+.pattern-prob{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
+  color:var(--amber);background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);
+  padding:3px 10px;border-radius:5px;white-space:nowrap
+}
+.pattern-name{font-size:14.5px;font-weight:700;color:#dde8f8;margin-bottom:7px;line-height:1.3}
+.pattern-trigger{font-size:12px;color:var(--muted);margin-bottom:6px;line-height:1.5}
+.pattern-insight{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+.pattern-ask{
+  background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);
+  border-radius:8px;padding:10px 12px;margin-bottom:10px
+}
+.pattern-ask-label{
+  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:rgba(74,222,128,.8);
+  display:block;margin-bottom:5px
+}
+.pattern-ask-text{font-size:12px;color:var(--muted);line-height:1.55}
+.pattern-footer{
+  display:flex;gap:12px;flex-wrap:wrap;
+  font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);
+  padding-top:8px;border-top:1px solid var(--line)
+}
+
+/* ── BUDGET GUIDE ── */
+.budget-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.budget-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.budget-flat{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#dde8f8;margin-bottom:2px}
+.budget-sqm{font-size:11px;color:var(--dim);margin-bottom:12px}
+.budget-range-row{display:flex;gap:6px;margin-bottom:10px}
+.budget-tier{
+  flex:1;text-align:center;padding:8px 6px;border-radius:8px;
+  font-size:11px;font-weight:500;line-height:1.4
+}
+.budget-tier strong{display:block;font-weight:700;font-size:12.5px;margin-top:3px}
+.budget-b{background:var(--green-dim);border:1px solid rgba(34,197,94,.2);color:rgba(74,222,128,.9)}
+.budget-m{background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);color:rgba(125,211,252,.9)}
+.budget-p{background:var(--purple-dim);border:1px solid rgba(168,85,247,.2);color:rgba(192,132,252,.9)}
+.budget-note{font-size:11.5px;color:var(--dim);line-height:1.5}
+
+/* ── GLOSSARY ── */
+.gloss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.gloss-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.gloss-term{font-size:13px;font-weight:700;color:var(--teal);margin-bottom:5px}
+.gloss-def{font-size:12px;color:var(--muted);line-height:1.55}
+
+/* ── FAQ ── */
+.faq-item{
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;margin-bottom:8px
+}
+.faq-q{
+  padding:14px 18px;font-size:13.5px;font-weight:600;color:#dde8f8;
+  cursor:pointer;list-style:none;display:flex;align-items:center;
+  justify-content:space-between
+}
+.faq-q::after{content:"＋";font-size:16px;color:var(--teal);flex:none}
+.faq-item[open] .faq-q::after{content:"－"}
+.faq-a{padding:0 18px 14px;font-size:13px;color:var(--muted);line-height:1.65;border-top:1px solid var(--line);padding-top:12px}
+
+/* ── FOOTER ── */
+.site-footer{
+  background:rgba(7,11,22,.95);border-top:1px solid var(--line);
+  padding:24px;text-align:center
+}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-brand{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--teal)
+}
+.footer-meta{font-size:11.5px;color:var(--dim);margin-top:6px;line-height:1.8}
+.footer-meta a{color:var(--muted);text-decoration:none}
+.footer-meta a:hover{color:var(--teal)}
+.footer-sep{color:#2a3550;margin:0 8px}
+.footer-disclaimer{font-size:10.5px;color:var(--dim);margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{min-width:0}
+  .price-table-header,.price-row{grid-template-columns:1fr 130px 130px 130px 150px}
+}
+@media(max-width:820px){
+  body{background-attachment:scroll}
+  .price-table-header{display:none}
+  .price-row{
+    grid-template-columns:1fr;gap:8px;
+    padding:16px;
+  }
+  .pr-budget,.pr-mid,.pr-premium{flex-direction:row;align-items:center;justify-content:space-between;padding:6px 0;border-top:1px solid var(--line)}
+  .tier-label{font-size:9px}
+  .tier-range{font-size:14px}
+  .pr-meta{flex-direction:row;flex-wrap:wrap;gap:6px;padding:0;padding-top:4px;border-top:1px solid var(--line)}
+  .hero{padding:32px 16px 24px}
+  .main-wrap{padding:0 16px 60px}
+  .header-inner{padding:10px 0}
+}
+@media(max-width:540px){
+  .hero-title{font-size:26px}
+  .cat-btn-label{display:none}
+  .cat-btn{padding:8px 10px}
+  .patterns-grid{grid-template-columns:1fr}
+  .budget-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand-mark" href="https://adamdegoat.github.io/renoradar/">
+      <div class="radar-icon">
+        <svg width="22" height="22" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="18" stroke="#06b6d4" stroke-width="1.2" opacity="0.4"/>
+          <circle cx="22" cy="22" r="11" stroke="#06b6d4" stroke-width="1.2" opacity="0.6"/>
+          <circle cx="22" cy="22" r="4" stroke="#06b6d4" stroke-width="1.2"/>
+          <circle cx="22" cy="22" r="1.5" fill="#06b6d4"/>
+          <line x1="22" y1="22" x2="36" y2="10" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <path d="M22 4 A18 18 0 0 1 38 28" stroke="#06b6d4" stroke-width="1" fill="none" opacity="0.25"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">RenoRadar</span>
+        <span class="brand-tag">SG Renovation Price Index</span>
+      </div>
+    </a>
+    <div class="header-meta">
+      <span class="h-pill live"><span class="live-dot"></span>Live Intelligence</span>
+      <span class="h-pill">Updated 4 Jun 2026</span>
+      <span class="h-pill">64 Items Tracked</span>
+      <span class="h-pill">6 AI Patterns Active</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Free · No Signup · Updated Weekly</div>
+    <h1 class="hero-title">Know the <span>real price</span> before<br>you sign anything.</h1>
+    <p class="hero-sub">
+      Singapore renovation prices are <b>completely opaque</b> — most homeowners have no idea if their quote is fair or inflated.
+      RenoRadar tracks real market rates for every renovation item, updated weekly by AI scanning actual forum quotes.
+      <b>Use it alongside your contractor quote.</b>
+    </p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-val">64</span><span class="hstat-label">Items tracked</span></div>
+      <div class="hstat"><span class="hstat-val">11</span><span class="hstat-label">Categories</span></div>
+      <div class="hstat"><span class="hstat-val">6</span><span class="hstat-label">Overcharge patterns</span></div>
+      <div class="hstat"><span class="hstat-val">Building...</span><span class="hstat-label">Market data points</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="howtouse-title">How to use this page</div>
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-text">Get your renovation quote from the contractor and <b>open it side by side</b> with this page.</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-text">Click the <b>category</b> that matches each line item in your quote (Electrical, Tiling, etc.).</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-text">Find your item, check which <b>price tier</b> your quote falls into, and look at the overcharge risk rating.</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div class="step-text">Scroll down to read the <b>AI-discovered contractor patterns</b> — then ask the right questions.</div>
+    </div>
+  </div>
+</div>
+
+<div class="intel-banner">
+  <div class="intel-inner">
+    <span class="intel-icon">🧠</span>
+    <div class="intel-text">
+      <b>Powered by L9 AI intelligence.</b> This system scrapes renovation forums 3× per week, extracts real prices using Claude AI, and autonomously invents new contractor overcharge patterns — validated through a 5-gate quality gauntlet before publishing.
+    </div>
+    <div class="intel-pills">
+      <span class="intel-pill">Haiku extraction</span>
+      <span class="intel-pill">Sonnet validation</span>
+      <span class="intel-pill">Weekly update</span>
+      <span class="intel-pill">Self-improving</span>
+    </div>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <!-- PRICE INDEX -->
+  <div class="section-wrap">
+    <div class="section-h">📊 Price Index — Select a Category</div>
+    <nav class="cat-nav" role="navigation" aria-label="Categories">
+  <button class="cat-btn active" onclick="showCat('electrical')" id="btn-electrical">
+    <span class="cat-btn-icon">⚡</span>
+    <span class="cat-btn-label">Electrical Works</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('plumbing')" id="btn-plumbing">
+    <span class="cat-btn-icon">🔧</span>
+    <span class="cat-btn-label">Plumbing Works</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('hacking')" id="btn-hacking">
+    <span class="cat-btn-icon">🚧</span>
+    <span class="cat-btn-label">Hacking & Demolition</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('tiling')" id="btn-tiling">
+    <span class="cat-btn-icon">🟧</span>
+    <span class="cat-btn-label">Tiling Works</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('painting')" id="btn-painting">
+    <span class="cat-btn-icon">🎨</span>
+    <span class="cat-btn-label">Painting Works</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('carpentry')" id="btn-carpentry">
+    <span class="cat-btn-icon">🪚</span>
+    <span class="cat-btn-label">Carpentry & Millwork</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('false_ceiling')" id="btn-false_ceiling">
+    <span class="cat-btn-icon">⬜</span>
+    <span class="cat-btn-label">False Ceiling</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('flooring')" id="btn-flooring">
+    <span class="cat-btn-icon">🏠</span>
+    <span class="cat-btn-label">Flooring</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('aircon')" id="btn-aircon">
+    <span class="cat-btn-icon">❄️</span>
+    <span class="cat-btn-label">Air Conditioning</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('bathroom')" id="btn-bathroom">
+    <span class="cat-btn-icon">🛀</span>
+    <span class="cat-btn-label">Bathroom Renovation</span>
+  </button>
+  <button class="cat-btn " onclick="showCat('kitchen')" id="btn-kitchen">
+    <span class="cat-btn-icon">🍳</span>
+    <span class="cat-btn-label">Kitchen Renovation</span>
+  </button>
+</nav>
+    <div style="margin-top:12px">
+      <div class="price-table-wrap">
+<div class="cat-panel" id="panel-electrical" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Electrical Works</h2>
+      <span class="panel-count">8 items tracked</span>
+    </div>
+    <p class="panel-desc">Power points, wiring, lighting and DB box installations</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Power points and DB box upgrades are the most frequently inflated items in SG renovation quotes.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="electrical-power_point_13a">
+      <div class="pr-name">
+        <span class="pr-item-name">Additional Power Point (13A)</span>
+        <span class="pr-unit">per point</span>
+        <span class="pr-notes">Price rises with cable run length and wall material. Brick walls cost more than drywall.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$65 – $90</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$90 – $130</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$130 – $180</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="electrical-five_pin_socket">
+      <div class="pr-name">
+        <span class="pr-item-name">5-Pin Socket Point</span>
+        <span class="pr-unit">per point</span>
+        <span class="pr-notes">Used for dryers, ovens and heavy appliances. Required by code for kitchen countertop areas.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$80 – $110</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$110 – $155</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$155 – $220</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="electrical-lighting_point">
+      <div class="pr-name">
+        <span class="pr-item-name">Lighting Point</span>
+        <span class="pr-unit">per point</span>
+        <span class="pr-notes">Includes wiring only. Fixture/light fittings are separate unless specified.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$55 – $80</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$80 – $120</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$120 – $165</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="electrical-ceiling_fan_point">
+      <div class="pr-name">
+        <span class="pr-item-name">Ceiling Fan Point</span>
+        <span class="pr-unit">per point</span>
+        <span class="pr-notes">Requires a reinforced ceiling box for fan mounting. Confirm this is included.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$70 – $95</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$95 – $135</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$135 – $185</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="electrical-aircon_dedicated_circuit">
+      <div class="pr-name">
+        <span class="pr-item-name">Dedicated Aircon Circuit</span>
+        <span class="pr-unit">per circuit</span>
+        <span class="pr-notes">Required by BCA code for each aircon unit. Do not share circuits — it is a fire hazard.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$160 – $220</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$220 – $290</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$290 – $400</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 5%</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="electrical-db_box_10way">
+      <div class="pr-name">
+        <span class="pr-item-name">DB Box Upgrade (10-way)</span>
+        <span class="pr-unit">per box</span>
+        <span class="pr-notes">Most 3-4 room HDB only need 10-way. 20-way is often an unnecessary upsell.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$350 – $520</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$520 – $720</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$720 – $980</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="electrical-db_box_20way">
+      <div class="pr-name">
+        <span class="pr-item-name">DB Box Upgrade (20-way)</span>
+        <span class="pr-unit">per box</span>
+        <span class="pr-notes">Suitable for 5-room or larger with many circuits. Confirm necessity before agreeing.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$600 – $820</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$820 – $1,100</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$1,100 – $1,500</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="electrical-switch_single">
+      <div class="pr-name">
+        <span class="pr-item-name">Switch Replacement (single)</span>
+        <span class="pr-unit">per switch</span>
+        <span class="pr-notes">Premium range covers designer switch plates (Legrand, Schneider). Mid is standard white.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$25 – $45</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$45 – $80</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$80 – $160</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always ask for price per point, not a lump sum for all electrical works.</li><li>DB box upgrade is only necessary if adding 3+ new circuits. Most 4-room HDB do not need it.</li><li>Dedicated aircon circuits are required by code — do not let contractors skip them.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-plumbing" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Plumbing Works</h2>
+      <span class="panel-count">7 items tracked</span>
+    </div>
+    <p class="panel-desc">Water points, fixtures, water heaters and drainage</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Fixture supply-and-install bundles are a common padding point. Always ask to separate supply from labour.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="plumbing-water_point_cold">
+      <div class="pr-name">
+        <span class="pr-item-name">Water Point (Cold Only)</span>
+        <span class="pr-unit">per point</span>
+        <span class="pr-notes">Labour only. Distance from riser and accessibility affects price.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$120 – $180</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$180 – $260</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$260 – $380</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="plumbing-water_point_hot_cold">
+      <div class="pr-name">
+        <span class="pr-item-name">Water Point (Hot + Cold)</span>
+        <span class="pr-unit">per pair</span>
+        <span class="pr-notes">Required for kitchen sink, washing machine, and shower areas.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$200 – $300</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$300 – $430</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$430 – $600</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="plumbing-basin_tap">
+      <div class="pr-name">
+        <span class="pr-item-name">Basin Tap (Supply + Install)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Budget includes basic chrome tap. Premium covers designer brands (Grohe, Hansgrohe).</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$70 – $160</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$160 – $320</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$320 – $700</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="plumbing-shower_mixer">
+      <div class="pr-name">
+        <span class="pr-item-name">Shower Mixer Set (Supply + Install)</span>
+        <span class="pr-unit">per set</span>
+        <span class="pr-notes">Exposed rain shower systems are at the premium end. Concealed systems add $300-600.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$180 – $380</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$380 – $700</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$700 – $1,800</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="plumbing-water_heater_storage">
+      <div class="pr-name">
+        <span class="pr-item-name">Storage Water Heater (Supply + Install)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">30-litre is standard for HDB bathroom. Prices have risen with supply chain costs.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$280 – $460</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$460 – $720</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$720 – $1,300</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 8%</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="plumbing-water_heater_instant">
+      <div class="pr-name">
+        <span class="pr-item-name">Instant Water Heater (Supply + Install)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Cheaper upfront but higher electricity bills. Suitable for light usage bathrooms.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$180 – $300</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$300 – $520</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$520 – $950</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="plumbing-floor_trap">
+      <div class="pr-name">
+        <span class="pr-item-name">Floor Trap (Supply + Install)</span>
+        <span class="pr-unit">per trap</span>
+        <span class="pr-notes">Linear floor traps for wet areas cost more than standard round traps.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$40 – $80</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$80 – $140</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$140 – $260</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Ask for labour-only price if you are supplying your own taps and fixtures.</li><li>Storage water heaters last longer than instant heaters but cost more to run.</li><li>Check if waterproofing is included in bathroom plumbing quotes — it usually is not.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-hacking" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Hacking & Demolition</h2>
+      <span class="panel-count">5 items tracked</span>
+    </div>
+    <p class="panel-desc">Tile removal, wall hacking and partition works</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Hacking is often quoted as a lump sum. Always request itemised sqft pricing.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="hacking-floor_tile_hacking">
+      <div class="pr-name">
+        <span class="pr-item-name">Floor Tile Hacking</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Mosaic and large-format tiles cost more. Price includes debris disposal.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$3 – $5.50</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$5.50 – $9</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$9 – $14</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="hacking-wall_tile_hacking">
+      <div class="pr-name">
+        <span class="pr-item-name">Wall Tile Hacking</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Wall hacking is harder than floor — requires scaffolding in some areas.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$4 – $7</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$7 – $11</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$11 – $16</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="hacking-brick_wall_hacking">
+      <div class="pr-name">
+        <span class="pr-item-name">Brick/Block Wall Hacking</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Labour-intensive. Reinforced walls cost more. Always check if structural before hacking.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$8 – $14</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$14 – $22</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$22 – $32</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 6%</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="hacking-drywall_partition_erect">
+      <div class="pr-name">
+        <span class="pr-item-name">Drywall Partition (Erect New)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Includes framing, drywall panels and plaster skim. Does not include painting.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$20 – $35</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$35 – $55</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$55 – $85</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="hacking-non_structural_wall_removal">
+      <div class="pr-name">
+        <span class="pr-item-name">Non-Structural Wall Removal</span>
+        <span class="pr-unit">per wall</span>
+        <span class="pr-notes">HDB approval required. Price varies by wall thickness and location. Never remove without confirming it is non-structural.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$800 – $1,500</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$1,500 – $2,600</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$2,600 – $4,200</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 4%</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Hacking price depends heavily on the material being removed. Mosaic tiles cost more to hack.</li><li>Always confirm debris disposal is included in the quote.</li><li>For non-structural walls, get written confirmation it is non-structural before proceeding.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-tiling" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Tiling Works</h2>
+      <span class="panel-count">6 items tracked</span>
+    </div>
+    <p class="panel-desc">Floor and wall tiling for all rooms and wet areas</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Tile wastage should be 10% max. Contractors quoting 20-30% wastage are overcharging on materials.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="tiling-floor_tiling_standard">
+      <div class="pr-name">
+        <span class="pr-item-name">Floor Tiling (Standard, Supply + Lay)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Includes standard 600x600 homogeneous tile supply and laying. Prices have risen with material costs.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$7 – $12</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$12 – $19</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$19 – $36</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 7%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="tiling-wall_tiling_standard">
+      <div class="pr-name">
+        <span class="pr-item-name">Wall Tiling (Standard, Supply + Lay)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Wall tiling costs more due to adhesive requirements and difficulty.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$8 – $14</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$14 – $23</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$23 – $42</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 5%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="tiling-wet_area_tiling">
+      <div class="pr-name">
+        <span class="pr-item-name">Wet Area Tiling (Bathroom)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Must include waterproofing membrane. Confirm this is in the quote before signing.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$10 – $17</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$17 – $26</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$26 – $48</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="tiling-mosaic_feature_tiles">
+      <div class="pr-name">
+        <span class="pr-item-name">Mosaic / Feature Tiles</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Mosaic tiles require more labour to align. Price includes supply for mid/premium tiers.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$18 – $30</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$30 – $50</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$50 – $110</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="tiling-outdoor_balcony_tiles">
+      <div class="pr-name">
+        <span class="pr-item-name">Outdoor / Balcony Tiles</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Requires anti-slip rated tiles for safety. Ensure R9+ rating minimum.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$10 – $18</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$18 – $29</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$29 – $58</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="tiling-regrouting_only">
+      <div class="pr-name">
+        <span class="pr-item-name">Regrouting (Labour Only)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Good alternative to full retiling for tiles in good condition. Check for lippage first.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$1.50 – $3</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$3 – $5</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$5 – $8.50</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Confirm whether the quote includes tile supply or is labour-only.</li><li>Large-format tiles (600x600 and above) cost more to lay due to difficulty.</li><li>Wet area tiling requires waterproofing beneath — always confirm it is included.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-painting" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Painting Works</h2>
+      <span class="panel-count">5 items tracked</span>
+    </div>
+    <p class="panel-desc">Interior walls, ceilings and feature surfaces</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Painting is the most commonly overcharged item per sqft in Singapore. Always get at least 3 quotes.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="painting-interior_walls_2coat">
+      <div class="pr-name">
+        <span class="pr-item-name">Interior Walls (2 Coats)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Most overcharged category. Painting labour has risen significantly due to foreign worker costs.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$1.20 – $2</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$2 – $3.20</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$3.20 – $5.50</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 10%</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="painting-ceiling_painting">
+      <div class="pr-name">
+        <span class="pr-item-name">Ceiling Painting (2 Coats)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Ceiling work requires scaffolding or ladders — legitimate cost driver.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$1 – $1.80</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$1.80 – $2.80</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$2.80 – $4.50</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 8%</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="painting-full_4room_hdb">
+      <div class="pr-name">
+        <span class="pr-item-name">Full Paint Job (4-Room HDB)</span>
+        <span class="pr-unit">lump sum</span>
+        <span class="pr-notes">Includes walls and ceilings throughout. Excludes feature walls and special finishes.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$1,600 – $2,400</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$2,400 – $3,600</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$3,600 – $5,800</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 12%</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="painting-full_5room_hdb">
+      <div class="pr-name">
+        <span class="pr-item-name">Full Paint Job (5-Room HDB)</span>
+        <span class="pr-unit">lump sum</span>
+        <span class="pr-notes">Same inclusions as 4-room but larger area. Always verify sqft measurement.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$2,100 – $3,200</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$3,200 – $4,800</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$4,800 – $7,500</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 12%</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="painting-feature_wall">
+      <div class="pr-name">
+        <span class="pr-item-name">Feature Wall (Special Finish)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Covers textured, concrete-look, or micro-cement finishes. Premium includes high-end texture paints.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$3 – $5.50</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$5.50 – $9</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$9 – $16</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Insist on Nippon or Dulux brand — budget contractors often use unknown brands at premium prices.</li><li>2 coats is standard. More coats are only needed for dark-to-light colour changes.</li><li>Confirm the quote covers furniture protection, masking and touch-up after renovation.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-carpentry" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Carpentry & Millwork</h2>
+      <span class="panel-count">7 items tracked</span>
+    </div>
+    <p class="panel-desc">Built-in wardrobes, kitchen cabinets, TV consoles and custom furniture</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Carpentry is the highest-value and most padding-prone category. Always ask for material specification in writing.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="carpentry-built_in_wardrobe">
+      <div class="pr-name">
+        <span class="pr-item-name">Built-In Wardrobe</span>
+        <span class="pr-unit">per linear ft</span>
+        <span class="pr-notes">Confirm ceiling-height, material grade, internal fittings and soft-close hardware are all included.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$280 – $450</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$450 – $680</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$680 – $1,200</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 6%</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="carpentry-kitchen_cabinet_full">
+      <div class="pr-name">
+        <span class="pr-item-name">Kitchen Cabinet (Top + Bottom)</span>
+        <span class="pr-unit">per linear ft</span>
+        <span class="pr-notes">One of the highest overcharge risk items. Always get a full material and hardware specification.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$350 – $560</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$560 – $880</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$880 – $1,600</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 7%</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="carpentry-kitchen_cabinet_bottom">
+      <div class="pr-name">
+        <span class="pr-item-name">Kitchen Cabinet (Bottom Only)</span>
+        <span class="pr-unit">per linear ft</span>
+        <span class="pr-notes">Useful when only lower run is being replaced. Ensure door profile matches upper if keeping existing.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$200 – $330</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$330 – $520</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$520 – $950</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="carpentry-shoe_cabinet">
+      <div class="pr-name">
+        <span class="pr-item-name">Shoe Cabinet (Built-In)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Price varies with size, height and door material. Mirror doors add 15-25% to cost.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$700 – $1,200</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$1,200 – $2,100</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$2,100 – $5,000</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="carpentry-tv_console">
+      <div class="pr-name">
+        <span class="pr-item-name">TV Console (Built-In)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Wall-mounted floating consoles cost more than floor-standing. Feature wall integration adds cost.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$900 – $1,700</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$1,700 – $3,200</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$3,200 – $9,000</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="carpentry-study_desk">
+      <div class="pr-name">
+        <span class="pr-item-name">Study Desk (Built-In)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Include dimensions and overhead cabinet requirements when requesting quotes.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$700 – $1,100</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$1,100 – $1,900</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$1,900 – $4,500</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="carpentry-feature_shelving">
+      <div class="pr-name">
+        <span class="pr-item-name">Feature / Display Shelving</span>
+        <span class="pr-unit">per linear ft</span>
+        <span class="pr-notes">Open shelving is cheaper than closed. Lighting integration adds 20-40% to cost.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$150 – $280</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$280 – $520</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$520 – $1,300</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always specify the board material: HDB-grade particleboard vs solid plywood vs moisture-resistant board.</li><li>Price per linear foot should include both carcass AND doors/panels — not just carcass.</li><li>Soft-close hinges and drawer systems should be standard, not a premium add-on.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-false_ceiling" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">False Ceiling</h2>
+      <span class="panel-count">4 items tracked</span>
+    </div>
+    <p class="panel-desc">Gypsum board ceilings, cove lighting and recessed features</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Cove lighting runs are sometimes quoted per linear foot without specifying LED strip inclusion. Always confirm.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="false_ceiling-gypsum_ceiling">
+      <div class="pr-name">
+        <span class="pr-item-name">Gypsum Board Ceiling</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Includes metal framing and gypsum board. Does not include painting or lighting cutouts.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$3.50 – $6</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$6 – $9.50</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$9.50 – $16</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="false_ceiling-l_box_cove">
+      <div class="pr-name">
+        <span class="pr-item-name">L-Box Lighting Cove</span>
+        <span class="pr-unit">per linear run</span>
+        <span class="pr-notes">Always confirm whether LED strip is included or separate. Many quotes exclude it.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$280 – $460</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$460 – $720</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$720 – $1,250</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="false_ceiling-cove_with_led">
+      <div class="pr-name">
+        <span class="pr-item-name">Cove Lighting (LED Strip Included)</span>
+        <span class="pr-unit">per linear run</span>
+        <span class="pr-notes">Confirm LED brand and colour temperature (warm white 2700K-3000K is most popular for residential).</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$350 – $570</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$570 – $880</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$880 – $1,550</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="false_ceiling-recessed_cutout">
+      <div class="pr-name">
+        <span class="pr-item-name">Recessed Lighting Cutout</span>
+        <span class="pr-unit">per cutout</span>
+        <span class="pr-notes">Labour only for cutting and framing. Downlight fittings are separate unless specified.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$25 – $45</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$45 – $72</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$72 – $130</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>False ceilings reduce ceiling height by 4-6 inches — confirm final height suits your space.</li><li>LED cove lighting consumption is minimal; it is the installation that costs, not running it.</li><li>Moisture-resistant gypsum board is required for bathrooms and kitchen — confirm board grade.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-flooring" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Flooring</h2>
+      <span class="panel-count">5 items tracked</span>
+    </div>
+    <p class="panel-desc">Vinyl, laminate, timber and epoxy floor installations</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Vinyl flooring quality varies enormously. Budget range often uses 2mm wear-layer vinyl; mid-range uses 4-6mm.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="flooring-vinyl_planks">
+      <div class="pr-name">
+        <span class="pr-item-name">Vinyl Planks (Supply + Install)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Most popular HDB renovation choice. Prices have risen sharply since 2023 due to import costs.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$3.50 – $5.80</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$5.80 – $9</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$9 – $16</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 9%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="flooring-laminate_flooring">
+      <div class="pr-name">
+        <span class="pr-item-name">Laminate Flooring (Supply + Install)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">AC3 or AC4 rating minimum for residential use. Not suitable for wet areas.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$4 – $7</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$7 – $11</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$11 – $21</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="flooring-engineered_timber">
+      <div class="pr-name">
+        <span class="pr-item-name">Engineered Timber (Supply + Install)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Best choice for real wood look in humid climate. 2-3mm top veneer is minimum acceptable quality.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$9 – $16</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$16 – $26</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$26 – $55</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="flooring-solid_timber">
+      <div class="pr-name">
+        <span class="pr-item-name">Solid Timber Flooring (Supply + Install)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Requires regular maintenance in SG humidity. Acclimatise boards for 72h before installation.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$15 – $26</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$26 – $42</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$42 – $85</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 5%</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="flooring-epoxy_flooring">
+      <div class="pr-name">
+        <span class="pr-item-name">Epoxy Flooring (Supply + Install)</span>
+        <span class="pr-unit">per sqft</span>
+        <span class="pr-notes">Ideal for car porches, storerooms and service yards. Self-levelling epoxy costs more.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$4 – $8</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$8 – $14</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$14 – $30</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always ask for the wear layer thickness on vinyl — 4mm minimum for HDB residential use.</li><li>Laminate is not waterproof — do not install in bathrooms or wet kitchens.</li><li>For timber, engineered is more dimensionally stable than solid in Singapore humidity.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-aircon" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Air Conditioning</h2>
+      <span class="panel-count">6 items tracked</span>
+    </div>
+    <p class="panel-desc">Split system installations, servicing and top-ups</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Chemical wash upsells for new units under 2 years old are unnecessary and a common revenue tactic.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="aircon-system_2">
+      <div class="pr-name">
+        <span class="pr-item-name">System 2 (2 Fancoils, Supply + Install)</span>
+        <span class="pr-unit">full system</span>
+        <span class="pr-notes">Suitable for 3-room HDB. Confirm piping length cap — typically 15-20m included.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$2,000 – $2,800</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$2,800 – $3,900</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$3,900 – $5,800</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 5%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="aircon-system_3">
+      <div class="pr-name">
+        <span class="pr-item-name">System 3 (3 Fancoils, Supply + Install)</span>
+        <span class="pr-unit">full system</span>
+        <span class="pr-notes">Most popular for 4-room HDB. Covers master bedroom, common bedroom and living.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$2,600 – $3,600</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$3,600 – $5,200</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$5,200 – $7,800</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 5%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="aircon-system_4">
+      <div class="pr-name">
+        <span class="pr-item-name">System 4 (4 Fancoils, Supply + Install)</span>
+        <span class="pr-unit">full system</span>
+        <span class="pr-notes">For 5-room HDB and condos. 4-tick rated units now standard — do not accept less.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$3,200 – $4,600</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$4,600 – $6,600</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$6,600 – $9,800</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 6%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="aircon-gas_top_up">
+      <div class="pr-name">
+        <span class="pr-item-name">Gas Top-Up (R32 / R410A)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Only necessary if gas is genuinely low. Do not top up without a leak check first.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$70 – $100</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$100 – $145</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$145 – $210</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="aircon-general_service">
+      <div class="pr-name">
+        <span class="pr-item-name">General Servicing</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Includes filter wash and coil cleaning. Every 3 months is standard for SG climate.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$40 – $60</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$60 – $90</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$90 – $155</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 8%</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="aircon-chemical_overhaul">
+      <div class="pr-name">
+        <span class="pr-item-name">Chemical Overhaul</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Only needed every 2-3 years or when unit is visibly scaled up. Often upsold unnecessarily.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$80 – $135</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$135 – $210</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$210 – $380</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>For new installations, get at least 3 quotes — prices vary by 30-40% between contractors.</li><li>Mitsubishi, Daikin, and Panasonic are the most reliable brands for SG climate.</li><li>Confirm piping length included in the quote — excess piping is billed separately.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-bathroom" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Bathroom Renovation</h2>
+      <span class="panel-count">5 items tracked</span>
+    </div>
+    <p class="panel-desc">Full and partial bathroom renovations for HDB and condos</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Full bathroom lump sum quotes often hide inflated fixture costs. Ask for itemised pricing.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="bathroom-full_bathroom_hdb">
+      <div class="pr-name">
+        <span class="pr-item-name">Full HDB Bathroom Renovation</span>
+        <span class="pr-unit">per bathroom</span>
+        <span class="pr-notes">Includes hacking, waterproofing, tiling, fixtures and accessories. Excludes vanity and shower screen unless stated.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$4,500 – $7,200</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$7,200 – $12,000</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$12,000 – $22,000</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 10%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="bathroom-partial_reno_tiling">
+      <div class="pr-name">
+        <span class="pr-item-name">Partial Reno (Tiling + Sanitary Only)</span>
+        <span class="pr-unit">per bathroom</span>
+        <span class="pr-notes">Good option when existing layout is kept. Saves on hacking and plumbing rerouting costs.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$2,500 – $4,100</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$4,100 – $7,200</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$7,200 – $16,000</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="bathroom-toilet_bowl">
+      <div class="pr-name">
+        <span class="pr-item-name">Toilet Bowl (Supply + Install)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Wall-hung toilets cost more for both unit and installation (requires wall bracket + carrier).</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$180 – $380</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$380 – $680</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$680 – $2,800</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="bathroom-vanity_with_basin">
+      <div class="pr-name">
+        <span class="pr-item-name">Vanity with Basin (Supply + Install)</span>
+        <span class="pr-unit">per unit</span>
+        <span class="pr-notes">Wall-hung vanities add plumbing complexity. Confirm soft-close drawers and solid surface top.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$280 – $530</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$530 – $950</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$950 – $3,500</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="bathroom-shower_screen">
+      <div class="pr-name">
+        <span class="pr-item-name">Shower Screen (Tempered Glass)</span>
+        <span class="pr-unit">per set</span>
+        <span class="pr-notes">8mm glass is standard. Frameless costs more than framed. Confirm it is SGCC certified.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$350 – $620</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$620 – $1,050</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$1,050 – $2,600</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always confirm waterproofing is included — it costs $300-600 extra if not.</li><li>Rectified tiles (precisely cut edges) are needed for large-format bathroom tiles.</li><li>Install a shower screen if your budget allows — it dramatically reduces cleaning effort.</li></ul></div>
+</div>
+<div class="cat-panel" id="panel-kitchen" style="display:none">
+  <div class="panel-header">
+    <div class="panel-title-row">
+      <h2 class="panel-title">Kitchen Renovation</h2>
+      <span class="panel-count">6 items tracked</span>
+    </div>
+    <p class="panel-desc">Full kitchen overhauls, cabinets, countertops and appliances</p>
+    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Kitchen renovation is the highest-value category. Countertop material upgrades are a common upsell from mid to premium tier.</div>
+  </div>
+  <div class="price-table-header">
+    <div class="pth-name">Item</div>
+    <div class="pth-budget">Budget</div>
+    <div class="pth-mid">Mid-Range</div>
+    <div class="pth-premium">Premium</div>
+    <div class="pth-meta">Trend / Risk / Data</div>
+  </div>
+  <div class="price-rows">
+    <div class="price-row" id="kitchen-full_kitchen_hdb">
+      <div class="pr-name">
+        <span class="pr-item-name">Full Kitchen Renovation (HDB)</span>
+        <span class="pr-unit">lump sum</span>
+        <span class="pr-notes">Includes hacking, tiling, carpentry, countertop, hood, hob. Appliances sometimes included at premium.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$7,000 – $12,000</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$12,000 – $22,000</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$22,000 – $50,000</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 8%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="kitchen-kitchen_cabinets_only">
+      <div class="pr-name">
+        <span class="pr-item-name">Kitchen Cabinets Only</span>
+        <span class="pr-unit">lump sum</span>
+        <span class="pr-notes">For cabinet replacement without full renovation. Confirm disposal of old cabinets is included.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$4,000 – $7,000</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$7,000 – $13,000</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$13,000 – $30,000</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 6%</span>
+        <span class="risk-high">⚠ High Risk</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="kitchen-countertop_solid_surface">
+      <div class="pr-name">
+        <span class="pr-item-name">Countertop — Solid Surface</span>
+        <span class="pr-unit">per linear ft</span>
+        <span class="pr-notes">Acrylic-based solid surface. Seamless joins, repairable if scratched. Most popular HDB choice.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$350 – $580</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$580 – $900</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$900 – $1,600</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="kitchen-countertop_quartz">
+      <div class="pr-name">
+        <span class="pr-item-name">Countertop — Quartz</span>
+        <span class="pr-unit">per linear ft</span>
+        <span class="pr-notes">Engineered quartz (Caesarstone, Silestone) is best value. 20mm thick minimum.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$450 – $820</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$820 – $1,500</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$1,500 – $3,200</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-up">↑ 4%</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="kitchen-countertop_marble">
+      <div class="pr-name">
+        <span class="pr-item-name">Countertop — Natural Marble</span>
+        <span class="pr-unit">per linear ft</span>
+        <span class="pr-notes">Requires regular sealing and is prone to staining. Premium choice for aesthetics.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$800 – $1,500</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$1,500 – $2,800</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$2,800 – $7,000</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-low">✓ Low</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>    <div class="price-row" id="kitchen-kitchen_hood_hob">
+      <div class="pr-name">
+        <span class="pr-item-name">Kitchen Hood + Hob Set (Supply + Install)</span>
+        <span class="pr-unit">per set</span>
+        <span class="pr-notes">Elica, EF, and Turbo are reliable mid-range brands. Gas and induction hobs have different install costs.</span>
+      </div>
+      <div class="pr-budget">
+        <div class="tier-label">Budget</div>
+        <div class="tier-range">$400 – $820</div>
+        <div class="tier-sub">Direct/Sub-con</div>
+      </div>
+      <div class="pr-mid">
+        <div class="tier-label">Mid-Range</div>
+        <div class="tier-range">$820 – $1,700</div>
+        <div class="tier-sub">Small Firm</div>
+      </div>
+      <div class="pr-premium">
+        <div class="tier-label">Premium</div>
+        <div class="tier-range">$1,700 – $5,500</div>
+        <div class="tier-sub">ID Firm</div>
+      </div>
+      <div class="pr-meta">
+        <span class="trend-stable">→ Stable</span>
+        <span class="risk-med">◈ Watch</span>
+        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Quartz is the best value countertop for SG kitchens — durable, low maintenance, heat resistant.</li><li>Confirm your kitchen is a wet or dry kitchen — this affects cabinet material requirements.</li><li>Get the carpentry and countertop quoted separately so you can compare independently.</li></ul></div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERCHARGE PATTERNS -->
+  <div class="section-wrap">
+    <div class="section-h">🔬 AI-Discovered Contractor Overcharge Patterns — 6 Active</div>
+    <div class="patterns-grid">
+<div class="pattern-card">
+  <div class="pattern-header">
+    <div>
+      <span class="pattern-cat">Carpentry</span>
+      <span class="pattern-source">🔬 Research Seeded</span>
+    </div>
+    <div class="pattern-prob" title="Probability this pattern results in overcharging">74% overcharge risk</div>
+  </div>
+  <h3 class="pattern-name">Vague Carpentry Material Specification</h3>
+  <p class="pattern-trigger"><strong>Trigger:</strong> Carpentry line items list no material grade, board type or brand</p>
+  <p class="pattern-insight">When carpentry quotes omit material specification, contractors frequently substitute lower-grade particleboard instead of moisture-resistant plywood, while charging mid-range prices.</p>
+  <div class="pattern-ask">
+    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-text">Ask contractor to specify: board type (MR/moisture-resistant plywood), door material (acrylic/laminate/solid wood), and hardware brand (Blum/Hettich/Hafele).</span>
+  </div>
+  <div class="pattern-footer">
+    <span>Avg overcharge: +28%</span>
+    <span>Confidence: 72%</span>
+    <span>Discovered: 2026-06-04</span>
+  </div>
+</div>
+<div class="pattern-card">
+  <div class="pattern-header">
+    <div>
+      <span class="pattern-cat">Painting</span>
+      <span class="pattern-source">🔬 Research Seeded</span>
+    </div>
+    <div class="pattern-prob" title="Probability this pattern results in overcharging">68% overcharge risk</div>
+  </div>
+  <h3 class="pattern-name">Painting Charged Per Room Instead of Per SqFt</h3>
+  <p class="pattern-trigger"><strong>Trigger:</strong> Painting quoted as flat rate per room rather than per sqft</p>
+  <p class="pattern-insight">Per-room flat rates consistently exceed per-sqft pricing for larger rooms (master bedroom, living room). Common for 5-room HDB where rooms are bigger.</p>
+  <div class="pattern-ask">
+    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-text">Ask for a per-sqft rate and calculate total area yourself. Standard HDB wall height is 2.6m — multiply perimeter by height for total sqft.</span>
+  </div>
+  <div class="pattern-footer">
+    <span>Avg overcharge: +22%</span>
+    <span>Confidence: 70%</span>
+    <span>Discovered: 2026-06-04</span>
+  </div>
+</div>
+<div class="pattern-card">
+  <div class="pattern-header">
+    <div>
+      <span class="pattern-cat">Tiling</span>
+      <span class="pattern-source">🔬 Research Seeded</span>
+    </div>
+    <div class="pattern-prob" title="Probability this pattern results in overcharging">81% overcharge risk</div>
+  </div>
+  <h3 class="pattern-name">Tile Wastage Overestimation</h3>
+  <p class="pattern-trigger"><strong>Trigger:</strong> Quote includes more than 12% tile wastage</p>
+  <p class="pattern-insight">Industry standard tile wastage is 8-10%. Contractors quoting 20-25% wastage are padding the material cost. This is most common for floor tiles and large-format tiles.</p>
+  <div class="pattern-ask">
+    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-text">Ask contractor to justify any wastage above 10%. For straight-lay patterns 10% is sufficient. Herringbone or diagonal patterns may justify 12-15%.</span>
+  </div>
+  <div class="pattern-footer">
+    <span>Avg overcharge: +15%</span>
+    <span>Confidence: 78%</span>
+    <span>Discovered: 2026-06-04</span>
+  </div>
+</div>
+<div class="pattern-card">
+  <div class="pattern-header">
+    <div>
+      <span class="pattern-cat">Electrical</span>
+      <span class="pattern-source">🔬 Research Seeded</span>
+    </div>
+    <div class="pattern-prob" title="Probability this pattern results in overcharging">66% overcharge risk</div>
+  </div>
+  <h3 class="pattern-name">DB Box Upsell for Small Flats</h3>
+  <p class="pattern-trigger"><strong>Trigger:</strong> 20-way DB box upgrade quoted for 3 or 4-room HDB</p>
+  <p class="pattern-insight">A 20-way DB box is generally unnecessary for 3 and 4-room HDB flats. Contractors upsell to the larger unit citing 'future-proofing' — the 10-way box handles all standard circuits comfortably.</p>
+  <div class="pattern-ask">
+    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-text">Ask your contractor to list all planned circuits. Count them. If under 10, a 10-way DB box is sufficient.</span>
+  </div>
+  <div class="pattern-footer">
+    <span>Avg overcharge: +35%</span>
+    <span>Confidence: 68%</span>
+    <span>Discovered: 2026-06-04</span>
+  </div>
+</div>
+<div class="pattern-card">
+  <div class="pattern-header">
+    <div>
+      <span class="pattern-cat">Aircon</span>
+      <span class="pattern-source">🔬 Research Seeded</span>
+    </div>
+    <div class="pattern-prob" title="Probability this pattern results in overcharging">79% overcharge risk</div>
+  </div>
+  <h3 class="pattern-name">Chemical Wash Upsell on Young Aircon Units</h3>
+  <p class="pattern-trigger"><strong>Trigger:</strong> Chemical overhaul recommended for aircon units under 2 years old</p>
+  <p class="pattern-insight">Chemical overhaul is a deep cleaning service necessary every 2-3 years of heavy use. Recommending it for units under 2 years old is almost always unnecessary and is a revenue tactic.</p>
+  <div class="pattern-ask">
+    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-text">Ask the technician to show you the state of the evaporator coil. If it is not visibly scaled or clogged, a general service is sufficient.</span>
+  </div>
+  <div class="pattern-footer">
+    <span>Avg overcharge: +100%</span>
+    <span>Confidence: 75%</span>
+    <span>Discovered: 2026-06-04</span>
+  </div>
+</div>
+<div class="pattern-card">
+  <div class="pattern-header">
+    <div>
+      <span class="pattern-cat">Kitchen</span>
+      <span class="pattern-source">🔬 Research Seeded</span>
+    </div>
+    <div class="pattern-prob" title="Probability this pattern results in overcharging">71% overcharge risk</div>
+  </div>
+  <h3 class="pattern-name">Lump Sum Kitchen Quote Without Itemisation</h3>
+  <p class="pattern-trigger"><strong>Trigger:</strong> Full kitchen renovation quoted as single lump sum with no line-item breakdown</p>
+  <p class="pattern-insight">Unitemised kitchen lump sums make it impossible to compare against market rates. This is most common when ID firms absorb all sub-contractor work under one number — the markup on individual items can reach 40-60%.</p>
+  <div class="pattern-ask">
+    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-text">Always request a full itemised quote: carpentry (per linear ft), countertop (per linear ft), tiling (per sqft), hacking (per sqft), plumbing (per point), hood/hob (separate). Compare each item against RenoRadar.</span>
+  </div>
+  <div class="pattern-footer">
+    <span>Avg overcharge: +32%</span>
+    <span>Confidence: 69%</span>
+    <span>Discovered: 2026-06-04</span>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <!-- BUDGET GUIDE -->
+  <div class="section-wrap">
+    <div class="section-h">💰 Quick Budget Reference — Full Renovation by Flat Type</div>
+    <div class="budget-grid">
+  <div class="budget-card">
+    <div class="budget-flat">3-Room HDB</div>
+    <div class="budget-sqm">~65 sqm</div>
+    <div class="budget-range-row">
+      <div class="budget-tier budget-b">Budget<br><strong>$25k–$45k</strong></div>
+      <div class="budget-tier budget-m">Mid-Range<br><strong>$45k–$75k</strong></div>
+      <div class="budget-tier budget-p">Premium<br><strong>$75k–$130k</strong></div>
+    </div>
+    <div class="budget-note">Typical for first-time renovation. Budget tier usually covers essential works only.</div>
+  </div>
+  <div class="budget-card">
+    <div class="budget-flat">4-Room HDB</div>
+    <div class="budget-sqm">~90 sqm</div>
+    <div class="budget-range-row">
+      <div class="budget-tier budget-b">Budget<br><strong>$35k–$60k</strong></div>
+      <div class="budget-tier budget-m">Mid-Range<br><strong>$60k–$100k</strong></div>
+      <div class="budget-tier budget-p">Premium<br><strong>$100k–$180k</strong></div>
+    </div>
+    <div class="budget-note">Most popular renovation scope. Mid-range typically covers full carpentry + new bathroom.</div>
+  </div>
+  <div class="budget-card">
+    <div class="budget-flat">5-Room HDB</div>
+    <div class="budget-sqm">~110 sqm</div>
+    <div class="budget-range-row">
+      <div class="budget-tier budget-b">Budget<br><strong>$45k–$75k</strong></div>
+      <div class="budget-tier budget-m">Mid-Range<br><strong>$75k–$130k</strong></div>
+      <div class="budget-tier budget-p">Premium<br><strong>$130k–$220k</strong></div>
+    </div>
+    <div class="budget-note">Larger floor area means carpentry and flooring costs dominate. Prioritise those categories.</div>
+  </div>
+  <div class="budget-card">
+    <div class="budget-flat">Condo (2BR)</div>
+    <div class="budget-sqm">~70–90 sqm</div>
+    <div class="budget-range-row">
+      <div class="budget-tier budget-b">Budget<br><strong>$40k–$65k</strong></div>
+      <div class="budget-tier budget-m">Mid-Range<br><strong>$65k–$110k</strong></div>
+      <div class="budget-tier budget-p">Premium<br><strong>$110k–$200k</strong></div>
+    </div>
+    <div class="budget-note">Condo management approval and working hours restrictions add cost and time to any renovation.</div>
+  </div>
+</div>
+    <p style="font-size:11.5px;color:var(--dim);margin-top:12px;line-height:1.6">
+      ⚠️ These are indicative ranges for a <em>full renovation</em> (all rooms, all categories). Actual cost depends on scope, materials chosen, and which contractor tier you engage. Use the price index above for individual item verification.
+    </p>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="section-wrap">
+    <div class="section-h">📖 Renovation Terms Explained</div>
+    <dl class="gloss-grid"><div class="gloss-item"><dt class="gloss-term">DB Box</dt><dd class="gloss-def">Distribution Board. The electrical panel that distributes power to different circuits in your home. Upgrading it adds more circuit capacity.</dd></div><div class="gloss-item"><dt class="gloss-term">PSF / Per SqFt</dt><dd class="gloss-def">Price per square foot. Common unit for tiling, flooring, painting and hacking. Multiply by your room area to get total cost.</dd></div><div class="gloss-item"><dt class="gloss-term">Linear Ft</dt><dd class="gloss-def">Measurement along a straight line. Used for carpentry (wardrobes, kitchen cabinets), countertops and false ceiling runs.</dd></div><div class="gloss-item"><dt class="gloss-term">R32 / R410A</dt><dd class="gloss-def">Types of refrigerant gas used in air conditioning systems. R32 is newer and more eco-friendly. Top-up is only needed if there is a leak.</dd></div><div class="gloss-item"><dt class="gloss-term">Rectified Tiles</dt><dd class="gloss-def">Tiles cut to precise dimensions with sharp edges. Required for large-format tiles and minimal grout lines.</dd></div><div class="gloss-item"><dt class="gloss-term">Waterproofing</dt><dd class="gloss-def">A membrane layer applied under bathroom tiles to prevent water seepage. Critical — never skip it.</dd></div><div class="gloss-item"><dt class="gloss-term">Fancoil</dt><dd class="gloss-def">The indoor unit of a split air conditioning system — the part mounted on your wall or ceiling.</dd></div><div class="gloss-item"><dt class="gloss-term">Chemical Overhaul</dt><dd class="gloss-def">A deep cleaning of the aircon evaporator coil using chemical solution. Only needed every 2-3 years, not every service.</dd></div><div class="gloss-item"><dt class="gloss-term">MR Board</dt><dd class="gloss-def">Moisture-Resistant board. Used in wet areas like kitchen and bathrooms. Budget contractors often substitute standard particleboard.</dd></div><div class="gloss-item"><dt class="gloss-term">Hacking</dt><dd class="gloss-def">Demolition work — removing existing tiles, walls, or structures before new installations. Priced per sqft.</dd></div><div class="gloss-item"><dt class="gloss-term">L-Box</dt><dd class="gloss-def">The recessed cove in a false ceiling that holds LED strip lighting. Creates an indirect lighting effect.</dd></div><div class="gloss-item"><dt class="gloss-term">ID Firm</dt><dd class="gloss-def">Interior Design firm. Full-service renovation companies that design and manage the entire project. Premium pricing but full coordination.</dd></div></dl>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-wrap">
+    <div class="section-h">❓ Frequently Asked Questions</div>
+    <details class="faq-item"><summary class="faq-q">How often is this data updated?</summary><div class="faq-a">The RenoRadar intelligence engine scrapes renovation forums three times a week (Monday, Wednesday, Friday) and updates price benchmarks every Wednesday night. The L9 AI engine also discovers new overcharge patterns weekly.</div></details><details class="faq-item"><summary class="faq-q">Are these prices inclusive of GST?</summary><div class="faq-a">Most renovation contractor quotes in Singapore are GST-exclusive. Add 9% on top of all prices shown here when comparing against your contractor's final invoice.</div></details><details class="faq-item"><summary class="faq-q">Why are there three price tiers?</summary><div class="faq-a">Budget tier reflects direct sub-contractors with no project management overhead. Mid-range covers small renovation firms with some design support. Premium covers full-service ID firms that manage the entire project — you pay for their coordination, not just the work.</div></details><details class="faq-item"><summary class="faq-q">My quote is higher than the Premium tier — is that normal?</summary><div class="faq-a">Not necessarily. Very high quotes can reflect: (1) condo surcharges for management restrictions, (2) unusual scope like structural work, (3) premium material choices, or (4) contractor padding. Use the overcharge patterns above to investigate.</div></details><details class="faq-item"><summary class="faq-q">Should I always go for the cheapest contractor?</summary><div class="faq-a">No. Budget tier contractors are legitimate, but they require more active supervision. Payment terms, material specifications and timeline commitments must all be documented in writing regardless of which tier you choose.</div></details><details class="faq-item"><summary class="faq-q">How do I use this page alongside my actual quote?</summary><div class="faq-a">Open your contractor quote on one screen and RenoRadar on another. Go through your quote line by line. For each item, find the matching category and item here, check which tier your quote falls into, and look at the overcharge risk rating.</div></details>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">RenoRadar</div>
+    <div class="footer-meta">
+      Singapore Renovation Price Index
+      <span class="footer-sep">·</span>
+      Built by <a href="https://adamdegoat.github.io">Adamdegoat</a>
+      <span class="footer-sep">·</span>
+      <a href="https://instagram.com/adamdegoat" target="_blank" rel="noopener">@adamdegoat</a>
+      <span class="footer-sep">·</span>
+      Powered by <a href="https://anthropic.com">Claude AI</a>
+      <span class="footer-sep">·</span>
+      Updated 4 Jun 2026
+    </div>
+    <div class="footer-disclaimer">
+      Prices are market benchmarks based on publicly available renovation quotes and forum data from Singapore.
+      They represent typical ranges and are not guaranteed quotes. Always obtain multiple written quotations
+      before committing to any renovation work.
+    </div>
+  </div>
+</footer>
+
+<script>
+function showCat(key) {
+  document.querySelectorAll('.cat-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('panel-' + key);
+  const btn = document.getElementById('btn-' + key);
+  if (panel) panel.style.display = 'block';
+  if (btn) btn.classList.add('active');
+  if (panel) panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+document.addEventListener('DOMContentLoaded', function() {
+  showCat('electrical');
+});
+</script>
+
+</body>
+</html>
