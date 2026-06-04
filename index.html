@@ -249,10 +249,12 @@ body{
   grid-template-columns:1fr 140px 140px 140px 185px;
   gap:0;padding:10px 20px;
   border-bottom:1px solid var(--line);
-  transition:background .12s ease
+  transition:background .12s ease;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;-webkit-user-select:none
 }
 .price-row:last-child{border-bottom:none}
-.price-row:hover{background:var(--surface2)}
+@media(hover:hover){.price-row:hover{background:var(--surface2)}}
 .risk-row-high{box-shadow:inset 3px 0 0 var(--amber)}
 .risk-row-medium{box-shadow:inset 3px 0 0 rgba(180,83,9,.3)}
 
