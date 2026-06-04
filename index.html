@@ -11,396 +11,429 @@
 <meta property="og:url" content="https://adamdegoat.github.io/renoradar/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#070b16;--surface:#0d1628;--surface2:#111f38;
-  --ink:#e8eef7;--muted:#8a99b5;--dim:#5d6b86;
-  --line:rgba(148,163,184,.13);
-  --teal:#06b6d4;--teal-dim:rgba(6,182,212,.12);
-  --green:#22c55e;--green-dim:rgba(34,197,94,.10);
-  --amber:#f59e0b;--amber-dim:rgba(245,158,11,.10);
-  --red:#ef4444;--red-dim:rgba(239,68,68,.10);
-  --purple:#a855f7;--purple-dim:rgba(168,85,247,.10)
+  --bg:#faf9f6;
+  --surface:#ffffff;
+  --surface2:#f5f3ef;
+  --ink:#1c1917;
+  --muted:#78716c;
+  --dim:#a8a29e;
+  --line:#e7e5e4;
+  --accent:#c2410c;
+  --accent-dim:rgba(194,65,12,.08);
+  --green:#15803d;
+  --green-dim:rgba(21,128,61,.08);
+  --blue:#1d4ed8;
+  --blue-dim:rgba(29,78,216,.08);
+  --purple:#6d28d9;
+  --purple-dim:rgba(109,40,217,.08);
+  --amber:#b45309;
+  --amber-dim:rgba(180,83,9,.09);
+  --red:#b91c1c;
+  --red-dim:rgba(185,28,28,.08)
 }
 html,body{height:100%;scroll-behavior:smooth}
 body{
   background:var(--bg);color:var(--ink);
   font-family:'Inter',system-ui,sans-serif;
   -webkit-font-smoothing:antialiased;
-  background-image:
-    radial-gradient(ellipse 900px 500px at 10% -5%,rgba(6,182,212,.10),transparent 60%),
-    radial-gradient(ellipse 700px 500px at 90% 5%,rgba(168,85,247,.08),transparent 60%),
-    linear-gradient(rgba(148,163,184,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(148,163,184,.025) 1px,transparent 1px);
-  background-size:auto,auto,44px 44px,44px 44px;
-  background-attachment:fixed
+  font-size:14px;line-height:1.5
 }
 
 /* ── HEADER ── */
 .site-header{
-  background:rgba(7,11,22,.92);border-bottom:1px solid var(--line);
-  backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;
+  background:var(--surface);
+  border-top:3px solid var(--accent);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:100;
   padding:0 24px
 }
 .header-inner{
-  max-width:1280px;margin:0 auto;padding:14px 0;
+  max-width:1280px;margin:0 auto;padding:10px 0;
   display:flex;align-items:center;gap:16px;flex-wrap:wrap
 }
 .brand-mark{
-  display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;flex:none
+  display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;flex:none
 }
-.radar-icon{
-  width:40px;height:40px;border-radius:10px;
-  background:linear-gradient(145deg,#061824,#041018);
-  border:1px solid rgba(6,182,212,.35);
-  display:grid;place-items:center;
-  box-shadow:0 0 0 3px rgba(6,182,212,.08),0 8px 24px rgba(0,0,0,.6)
-}
-.brand-text{display:flex;flex-direction:column;gap:1px}
 .brand-name{
-  font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:20px;
-  color:var(--teal);letter-spacing:-.3px;line-height:1
+  font-weight:700;font-size:18px;
+  color:var(--accent);letter-spacing:-.3px;line-height:1
 }
-.brand-tag{font-size:10px;color:var(--dim);font-weight:500;letter-spacing:.5px}
+.brand-tag{font-size:10px;color:var(--dim);font-weight:500;letter-spacing:.3px;display:block;margin-top:1px}
 .header-meta{
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-left:auto
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-left:auto
 }
 .h-pill{
-  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
-  letter-spacing:1.4px;text-transform:uppercase;
-  padding:4px 10px;border-radius:20px;border:1px solid var(--line);
-  color:var(--muted);background:rgba(148,163,184,.05)
+  font-size:10px;font-weight:500;
+  padding:3px 9px;border-radius:20px;border:1px solid var(--line);
+  color:var(--muted);background:var(--surface2)
 }
-.h-pill.live{color:var(--green);border-color:rgba(34,197,94,.25);background:var(--green-dim)}
-.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}70%{box-shadow:0 0 0 7px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.h-pill.live{color:var(--green);border-color:rgba(21,128,61,.3);background:var(--green-dim)}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px;animation:pulse 2s infinite;vertical-align:middle}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(21,128,61,.5)}70%{box-shadow:0 0 0 6px rgba(21,128,61,0)}100%{box-shadow:0 0 0 0 rgba(21,128,61,0)}}
 
 /* ── HERO ── */
 .hero{
-  max-width:1280px;margin:0 auto;padding:52px 24px 40px;
-  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start
+  max-width:1280px;margin:0 auto;
+  padding:28px 24px 0
 }
-.hero-left{}
-.hero-eyebrow{
-  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
-  letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px
+.hero-top{
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px
 }
 .hero-title{
-  font-family:'Space Grotesk',sans-serif;font-weight:800;
-  font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-1.5px;
-  color:#dde8f8;margin-bottom:14px
+  font-weight:700;font-size:clamp(20px,3vw,28px);
+  letter-spacing:-.5px;color:var(--ink);line-height:1.2
 }
-.hero-title span{color:var(--teal)}
+.hero-title span{color:var(--accent)}
 .hero-sub{
-  font-size:15px;line-height:1.7;color:var(--muted);max-width:560px;margin-bottom:22px
+  font-size:13px;color:var(--muted);max-width:720px;margin-bottom:12px;line-height:1.55
 }
-.hero-sub b{color:#c5d5ee;font-weight:600}
-.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
-.hstat{display:flex;flex-direction:column;gap:3px}
-.hstat-val{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;
-  color:var(--teal);letter-spacing:-.5px
+.hero-sub b{color:var(--ink);font-weight:600}
+.hero-stats{display:flex;gap:0;flex-wrap:wrap;margin-bottom:0}
+.hstat{
+  display:flex;align-items:baseline;gap:5px;
+  padding:6px 16px;border-right:1px solid var(--line)
 }
-.hstat-label{font-size:11px;color:var(--dim);font-weight:500}
-.hero-right{
-  background:var(--surface);border:1px solid var(--line);border-radius:14px;
-  padding:20px;min-width:240px;flex:none
-}
-.howtouse-title{
-  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:14px
-}
-.step-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
-.step-row:last-child{margin-bottom:0}
-.step-num{
-  width:22px;height:22px;border-radius:6px;
-  background:var(--teal-dim);border:1px solid rgba(6,182,212,.3);
-  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;
-  color:var(--teal);display:grid;place-items:center;flex:none;margin-top:1px
-}
-.step-text{font-size:12.5px;color:var(--muted);line-height:1.5}
-.step-text b{color:#c5d5ee;font-weight:600}
+.hstat:first-child{padding-left:0}
+.hstat:last-child{border-right:none}
+.hstat-val{font-weight:700;font-size:18px;color:var(--accent);letter-spacing:-.3px}
+.hstat-label{font-size:11px;color:var(--dim)}
 
-/* ── HOW IT WORKS BANNER ── */
+/* ── HOW TO USE STRIP ── */
+.how-strip{
+  max-width:1280px;margin:0 auto;
+  padding:10px 24px 16px
+}
+.how-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border:1px solid var(--line);border-radius:8px;
+  background:var(--surface);overflow:hidden
+}
+.how-step{
+  padding:10px 14px;border-right:1px solid var(--line);
+  display:flex;align-items:flex-start;gap:8px
+}
+.how-step:last-child{border-right:none}
+.how-num{
+  width:18px;height:18px;border-radius:4px;
+  background:var(--accent-dim);border:1px solid rgba(194,65,12,.2);
+  font-size:9px;font-weight:700;color:var(--accent);
+  display:grid;place-items:center;flex:none;margin-top:1px
+}
+.how-text{font-size:11.5px;color:var(--muted);line-height:1.45}
+.how-text b{color:var(--ink);font-weight:600}
+
+/* ── INTEL BANNER ── */
 .intel-banner{
-  max-width:1280px;margin:0 auto 0;padding:0 24px 24px
+  max-width:1280px;margin:0 auto;padding:0 24px 16px
 }
 .intel-inner{
-  background:linear-gradient(135deg,rgba(6,182,212,.07),rgba(168,85,247,.05));
-  border:1px solid rgba(6,182,212,.18);border-radius:12px;
-  padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap
+  background:var(--surface2);border:1px solid var(--line);border-radius:6px;
+  padding:8px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap
 }
-.intel-icon{font-size:20px;flex:none}
-.intel-text{font-size:12.5px;color:var(--muted);line-height:1.5}
-.intel-text b{color:#c5d5ee}
-.intel-pills{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.intel-text{font-size:11.5px;color:var(--muted);line-height:1.4}
+.intel-text b{color:var(--ink)}
+.intel-pills{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
 .intel-pill{
-  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
-  letter-spacing:1.2px;text-transform:uppercase;
-  padding:4px 10px;border-radius:20px;border:1px solid rgba(6,182,212,.2);
-  color:var(--teal);background:var(--teal-dim)
+  font-size:10px;font-weight:500;
+  padding:2px 8px;border-radius:20px;border:1px solid rgba(194,65,12,.2);
+  color:var(--accent);background:var(--accent-dim)
 }
 
 /* ── MAIN LAYOUT ── */
-.main-wrap{max-width:1280px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:1fr;gap:32px}
-
-/* ── CATEGORY NAV ── */
-.cat-nav{
-  display:flex;gap:6px;flex-wrap:wrap;
-  padding:16px;background:var(--surface);
-  border:1px solid var(--line);border-radius:14px
-}
-.cat-btn{
-  display:flex;align-items:center;gap:7px;padding:8px 14px;
-  border-radius:8px;border:1px solid transparent;
-  background:transparent;color:var(--muted);cursor:pointer;
-  font-family:'Inter',sans-serif;font-size:13px;font-weight:500;
-  transition:all .18s ease;white-space:nowrap
-}
-.cat-btn:hover{background:var(--teal-dim);color:#c5d5ee;border-color:rgba(6,182,212,.2)}
-.cat-btn.active{
-  background:var(--teal-dim);color:var(--teal);
-  border-color:rgba(6,182,212,.35);font-weight:600
-}
-.cat-btn-icon{font-size:14px}
-.cat-btn-label{font-size:12.5px}
-
-/* ── PRICE TABLE ── */
-.price-table-wrap{
-  background:var(--surface);border:1px solid var(--line);border-radius:14px;
-  overflow:hidden
-}
-.panel-header{padding:20px 24px;border-bottom:1px solid var(--line)}
-.panel-title-row{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-.panel-title{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;
-  font-size:20px;color:#fff;letter-spacing:-.3px
-}
-.panel-count{
-  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);
-  background:var(--teal-dim);border:1px solid rgba(6,182,212,.2);
-  padding:3px 9px;border-radius:20px
-}
-.panel-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
-.cat-warning{
-  font-size:12.5px;color:rgba(245,158,11,.9);line-height:1.55;
-  background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);
-  border-radius:8px;padding:10px 14px;margin-top:8px
-}
-
-.price-table-header{
-  display:grid;
-  grid-template-columns:1fr 160px 160px 160px 180px;
-  gap:0;padding:10px 24px;
-  background:rgba(148,163,184,.04);
-  border-bottom:1px solid var(--line)
-}
-.pth-name,.pth-budget,.pth-mid,.pth-premium,.pth-meta{
-  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)
-}
-.pth-budget{color:rgba(34,197,94,.7)}
-.pth-mid{color:rgba(56,189,248,.7)}
-.pth-premium{color:rgba(168,85,247,.7)}
-
-.price-rows{}
-.price-row{
-  display:grid;
-  grid-template-columns:1fr 160px 160px 160px 180px;
-  gap:0;padding:14px 24px;
-  border-bottom:1px solid var(--line);
-  transition:background .15s ease
-}
-.price-row:last-child{border-bottom:none}
-.price-row:hover{background:rgba(148,163,184,.03)}
-
-.pr-name{display:flex;flex-direction:column;gap:3px;justify-content:center;padding-right:16px}
-.pr-item-name{font-size:13.5px;font-weight:600;color:#dde8f8;line-height:1.3}
-.pr-unit{
-  font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);
-  font-weight:600;letter-spacing:.8px
-}
-.pr-notes{font-size:11px;color:var(--dim);line-height:1.4;margin-top:2px}
-
-.pr-budget,.pr-mid,.pr-premium{
-  display:flex;flex-direction:column;gap:3px;justify-content:center;
-  padding:0 8px
-}
-.tier-label{
-  font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:700;
-  letter-spacing:1.2px;text-transform:uppercase
-}
-.pr-budget .tier-label{color:rgba(34,197,94,.7)}
-.pr-mid .tier-label{color:rgba(56,189,248,.7)}
-.pr-premium .tier-label{color:rgba(168,85,247,.7)}
-.tier-range{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13.5px;
-  letter-spacing:-.3px
-}
-.pr-budget .tier-range{color:#4ade80}
-.pr-mid .tier-range{color:#7dd3fc}
-.pr-premium .tier-range{color:#c084fc}
-.tier-sub{font-size:9.5px;color:var(--dim)}
-
-.pr-meta{
-  display:flex;flex-direction:column;gap:5px;justify-content:center;
-  padding:0 8px
-}
-.trend-up{font-size:11px;font-weight:600;color:#f87171;background:var(--red-dim);border:1px solid rgba(239,68,68,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
-.trend-down{font-size:11px;font-weight:600;color:#4ade80;background:var(--green-dim);border:1px solid rgba(34,197,94,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
-.trend-stable{font-size:11px;font-weight:600;color:var(--muted);background:rgba(148,163,184,.06);border:1px solid var(--line);padding:2px 7px;border-radius:5px;white-space:nowrap}
-.risk-high{font-size:10.5px;font-weight:600;color:var(--amber);background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
-.risk-med{font-size:10.5px;font-weight:600;color:rgba(96,165,250,.9);background:rgba(96,165,250,.07);border:1px solid rgba(96,165,250,.2);padding:2px 7px;border-radius:5px;white-space:nowrap}
-.risk-low{font-size:10.5px;font-weight:600;color:rgba(74,222,128,.8);background:var(--green-dim);border:1px solid rgba(34,197,94,.18);padding:2px 7px;border-radius:5px;white-space:nowrap}
-.conf-seed{font-size:10px;color:var(--dim);white-space:nowrap}
-.conf-low{font-size:10px;color:rgba(245,158,11,.6);white-space:nowrap}
-.conf-med{font-size:10px;color:rgba(56,189,248,.7);white-space:nowrap}
-.conf-high{font-size:10px;color:rgba(34,197,94,.8);white-space:nowrap}
-
-/* ── CATEGORY TIPS ── */
-.cat-tips{
-  margin:16px 24px;padding:16px;
-  background:rgba(6,182,212,.04);border:1px solid rgba(6,182,212,.15);border-radius:10px
-}
-.tips-title{
-  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:10px
-}
-.cat-tips ul{list-style:none;display:flex;flex-direction:column;gap:6px}
-.cat-tips li{font-size:12.5px;color:var(--muted);line-height:1.55;padding-left:16px;position:relative}
-.cat-tips li::before{content:"→";position:absolute;left:0;color:var(--teal)}
+.main-wrap{max-width:1280px;margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:1fr;gap:24px}
 
 /* ── SECTION HEADERS ── */
 .section-wrap{}
 .section-h{
-  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
-  letter-spacing:2.5px;text-transform:uppercase;color:var(--dim);
-  margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line)
+  font-size:11px;font-weight:600;
+  letter-spacing:.5px;text-transform:uppercase;color:var(--muted);
+  margin-bottom:12px;padding-left:10px;
+  border-left:3px solid var(--accent)
 }
 
-/* ── PATTERNS ── */
-.patterns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px}
-.pattern-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:12px;
-  padding:18px;transition:border-color .18s
+/* ── CATEGORY NAV ── */
+.cat-nav{
+  display:flex;gap:4px;flex-wrap:wrap;
+  padding:10px 12px;background:var(--surface);
+  border:1px solid var(--line);border-radius:8px;
+  margin-bottom:8px
 }
-.pattern-card:hover{border-color:rgba(245,158,11,.3)}
-.pattern-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px;flex-wrap:wrap}
+.cat-btn{
+  display:flex;align-items:center;gap:5px;padding:5px 11px;
+  border-radius:20px;border:1px solid transparent;
+  background:transparent;color:var(--muted);cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:500;
+  transition:all .15s ease;white-space:nowrap
+}
+.cat-btn:hover{background:var(--accent-dim);color:var(--accent);border-color:rgba(194,65,12,.2)}
+.cat-btn.active{
+  background:var(--accent-dim);color:var(--accent);
+  border-color:rgba(194,65,12,.3);font-weight:600
+}
+.cat-btn-icon{font-size:12px}
+.cat-btn-label{font-size:12px}
+
+/* ── PRICE TABLE ── */
+.price-table-wrap{
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)
+}
+.panel-header{padding:14px 20px;border-bottom:1px solid var(--line)}
+.panel-title-row{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.panel-title{
+  font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-.2px
+}
+.panel-count{
+  font-size:10px;font-weight:600;color:var(--accent);
+  background:var(--accent-dim);border:1px solid rgba(194,65,12,.2);
+  padding:2px 8px;border-radius:20px
+}
+.panel-desc{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:6px}
+.cat-warning{
+  font-size:12px;color:var(--amber);line-height:1.5;
+  background:var(--amber-dim);border:1px solid rgba(180,83,9,.2);
+  border-radius:6px;padding:8px 12px;margin-top:6px
+}
+
+.price-table-header{
+  display:grid;
+  grid-template-columns:1fr 140px 140px 140px 185px;
+  gap:0;padding:8px 20px;
+  background:var(--surface2);
+  border-bottom:1px solid var(--line)
+}
+.pth-name,.pth-budget,.pth-mid,.pth-premium,.pth-meta{
+  font-size:9px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:var(--dim)
+}
+.pth-budget{color:var(--green)}
+.pth-mid{color:var(--blue)}
+.pth-premium{color:var(--purple)}
+
+.price-rows{}
+.price-row{
+  display:grid;
+  grid-template-columns:1fr 140px 140px 140px 185px;
+  gap:0;padding:10px 20px;
+  border-bottom:1px solid var(--line);
+  transition:background .12s ease
+}
+.price-row:last-child{border-bottom:none}
+.price-row:hover{background:var(--surface2)}
+
+.pr-name{display:flex;flex-direction:column;gap:2px;justify-content:center;padding-right:14px}
+.pr-item-name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3}
+.pr-unit{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);
+  font-weight:500;letter-spacing:.5px
+}
+.pr-notes{font-size:11px;color:var(--dim);line-height:1.4;margin-top:1px}
+
+.pr-budget,.pr-mid,.pr-premium{
+  display:flex;flex-direction:column;gap:2px;justify-content:center;
+  padding:0 6px
+}
+.tier-label{
+  font-size:8.5px;font-weight:700;
+  letter-spacing:.8px;text-transform:uppercase
+}
+.pr-budget .tier-label{color:var(--green)}
+.pr-mid .tier-label{color:var(--blue)}
+.pr-premium .tier-label{color:var(--purple)}
+.tier-range{
+  font-weight:700;font-size:12.5px;
+  letter-spacing:-.2px
+}
+.pr-budget .tier-range{color:var(--green)}
+.pr-mid .tier-range{color:var(--blue)}
+.pr-premium .tier-range{color:var(--purple)}
+.tier-sub{font-size:9px;color:var(--dim)}
+
+.pr-meta{
+  display:flex;flex-direction:column;gap:3px;justify-content:center;
+  padding:0 6px
+}
+.meta-trend,.meta-risk,.meta-conf{
+  font-size:11px;white-space:nowrap;display:block
+}
+.meta-conf{
+  font-size:10px;color:var(--dim)
+}
+.trend-up{color:var(--red);font-weight:600}
+.trend-down{color:var(--green);font-weight:600}
+.trend-stable{color:var(--muted)}
+.risk-high{color:var(--amber);font-weight:600}
+.risk-med{color:var(--muted)}
+.risk-low{color:var(--green)}
+
+/* ── CATEGORY TIPS ── */
+.cat-tips{
+  margin:12px 20px;padding:12px 14px;
+  background:var(--surface2);border:1px solid var(--line);border-radius:6px
+}
+.tips-title{
+  font-size:10px;font-weight:700;
+  letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:8px
+}
+.cat-tips ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.cat-tips li{font-size:12px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative}
+.cat-tips li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+/* ── PATTERNS ── */
+.patterns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+.pattern-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  padding:14px;transition:border-color .15s
+}
+.pattern-card:hover{border-color:rgba(180,83,9,.3)}
+.pattern-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:6px;flex-wrap:wrap}
+.pattern-header-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .pattern-cat{
-  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
-  letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);
-  background:var(--teal-dim);border:1px solid rgba(6,182,212,.2);
-  padding:2px 8px;border-radius:4px
+  font-size:9px;font-weight:700;
+  letter-spacing:.8px;text-transform:uppercase;color:var(--accent);
+  background:var(--accent-dim);border:1px solid rgba(194,65,12,.2);
+  padding:2px 7px;border-radius:4px
 }
 .pattern-source{
-  font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--dim);
-  padding:2px 8px;border-radius:4px;border:1px solid var(--line)
+  font-size:9px;color:var(--dim);
+  padding:2px 7px;border-radius:4px;border:1px solid var(--line)
 }
 .pattern-prob{
-  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
-  color:var(--amber);background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);
-  padding:3px 10px;border-radius:5px;white-space:nowrap
+  font-size:10px;font-weight:700;
+  color:var(--amber);background:var(--amber-dim);border:1px solid rgba(180,83,9,.2);
+  padding:2px 9px;border-radius:4px;white-space:nowrap
 }
-.pattern-name{font-size:14.5px;font-weight:700;color:#dde8f8;margin-bottom:7px;line-height:1.3}
-.pattern-trigger{font-size:12px;color:var(--muted);margin-bottom:6px;line-height:1.5}
-.pattern-insight{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+.pattern-name{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.3}
+.pattern-insight{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:8px}
 .pattern-ask{
-  background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);
-  border-radius:8px;padding:10px 12px;margin-bottom:10px
+  background:var(--surface2);border:1px solid var(--line);
+  border-radius:6px;padding:8px 10px;margin-bottom:8px
 }
 .pattern-ask-label{
-  font-family:'IBM Plex Mono',monospace;font-size:8.5px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;color:rgba(74,222,128,.8);
-  display:block;margin-bottom:5px
+  font-size:9px;font-weight:700;
+  letter-spacing:.6px;text-transform:uppercase;color:var(--green);
+  display:block;margin-bottom:3px
 }
-.pattern-ask-text{font-size:12px;color:var(--muted);line-height:1.55}
+.pattern-ask-text{font-size:11.5px;color:var(--muted);line-height:1.5}
 .pattern-footer{
-  display:flex;gap:12px;flex-wrap:wrap;
-  font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);
-  padding-top:8px;border-top:1px solid var(--line)
+  display:flex;gap:10px;flex-wrap:wrap;
+  font-size:10px;color:var(--dim);
+  padding-top:7px;border-top:1px solid var(--line)
 }
 
 /* ── BUDGET GUIDE ── */
-.budget-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.budget-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
-.budget-flat{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#dde8f8;margin-bottom:2px}
-.budget-sqm{font-size:11px;color:var(--dim);margin-bottom:12px}
-.budget-range-row{display:flex;gap:6px;margin-bottom:10px}
-.budget-tier{
-  flex:1;text-align:center;padding:8px 6px;border-radius:8px;
-  font-size:11px;font-weight:500;line-height:1.4
+.budget-table-wrap{
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)
 }
-.budget-tier strong{display:block;font-weight:700;font-size:12.5px;margin-top:3px}
-.budget-b{background:var(--green-dim);border:1px solid rgba(34,197,94,.2);color:rgba(74,222,128,.9)}
-.budget-m{background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);color:rgba(125,211,252,.9)}
-.budget-p{background:var(--purple-dim);border:1px solid rgba(168,85,247,.2);color:rgba(192,132,252,.9)}
-.budget-note{font-size:11.5px;color:var(--dim);line-height:1.5}
+.budget-table{width:100%;border-collapse:collapse}
+.budget-table thead tr{background:var(--surface2)}
+.budget-table th{
+  padding:10px 16px;text-align:left;
+  font-size:12px;font-weight:700;color:var(--ink);
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line)
+}
+.budget-table th:last-child{border-right:none}
+.bt-tier-col{width:110px}
+.bt-flat-col{}
+.bt-sqm{display:block;font-size:10px;font-weight:400;color:var(--dim);margin-top:1px}
+.bt-row td{
+  padding:9px 16px;font-size:12.5px;font-weight:600;
+  border-bottom:1px solid var(--line);border-right:1px solid var(--line)
+}
+.bt-row td:last-child{border-right:none}
+.bt-row:last-child td{border-bottom:none}
+.bt-tier-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.bt-row-b td{color:var(--green)}
+.bt-row-b .bt-tier-label{color:var(--green)}
+.bt-row-b{background:var(--green-dim)}
+.bt-row-m td{color:var(--blue)}
+.bt-row-m .bt-tier-label{color:var(--blue)}
+.bt-row-m{background:var(--blue-dim)}
+.bt-row-p td{color:var(--purple)}
+.bt-row-p .bt-tier-label{color:var(--purple)}
+.bt-row-p{background:var(--purple-dim)}
 
 /* ── GLOSSARY ── */
-.gloss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
-.gloss-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
-.gloss-term{font-size:13px;font-weight:700;color:var(--teal);margin-bottom:5px}
-.gloss-def{font-size:12px;color:var(--muted);line-height:1.55}
+.gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gloss-item{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.gloss-term{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:3px}
+.gloss-def{font-size:11.5px;color:var(--muted);line-height:1.5}
 
 /* ── FAQ ── */
 .faq-item{
-  background:var(--surface);border:1px solid var(--line);border-radius:10px;
-  overflow:hidden;margin-bottom:8px
+  background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  overflow:hidden;margin-bottom:6px
 }
 .faq-q{
-  padding:14px 18px;font-size:13.5px;font-weight:600;color:#dde8f8;
+  padding:11px 16px;font-size:13px;font-weight:600;color:var(--ink);
   cursor:pointer;list-style:none;display:flex;align-items:center;
   justify-content:space-between
 }
-.faq-q::after{content:"＋";font-size:16px;color:var(--teal);flex:none}
+.faq-q::after{content:"＋";font-size:14px;color:var(--accent);flex:none}
 .faq-item[open] .faq-q::after{content:"－"}
-.faq-a{padding:0 18px 14px;font-size:13px;color:var(--muted);line-height:1.65;border-top:1px solid var(--line);padding-top:12px}
+.faq-a{padding:10px 16px 12px;font-size:12.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--line)}
 
 /* ── FOOTER ── */
 .site-footer{
-  background:rgba(7,11,22,.95);border-top:1px solid var(--line);
-  padding:24px;text-align:center
+  background:var(--surface);border-top:1px solid var(--line);
+  padding:12px 24px;text-align:center
 }
-.footer-inner{max-width:1280px;margin:0 auto}
-.footer-brand{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--teal)
+.footer-inner{
+  max-width:1280px;margin:0 auto;
+  font-size:11.5px;color:var(--dim);line-height:1.7
 }
-.footer-meta{font-size:11.5px;color:var(--dim);margin-top:6px;line-height:1.8}
-.footer-meta a{color:var(--muted);text-decoration:none}
-.footer-meta a:hover{color:var(--teal)}
-.footer-sep{color:#2a3550;margin:0 8px}
-.footer-disclaimer{font-size:10.5px;color:var(--dim);margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+.footer-inner a{color:var(--muted);text-decoration:none}
+.footer-inner a:hover{color:var(--accent)}
+.footer-brand{font-weight:700;color:var(--accent);display:inline}
+.footer-sep{color:var(--line);margin:0 6px}
+.footer-disclaimer{font-size:10.5px;color:var(--dim);margin-top:4px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.5}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{min-width:0}
-  .price-table-header,.price-row{grid-template-columns:1fr 130px 130px 130px 150px}
+  .price-table-header,.price-row{grid-template-columns:1fr 120px 120px 120px 165px}
+  .gloss-grid{grid-template-columns:repeat(2,1fr)}
+  .how-inner{grid-template-columns:repeat(2,1fr)}
+  .how-step:nth-child(2){border-right:none}
 }
 @media(max-width:820px){
-  body{background-attachment:scroll}
   .price-table-header{display:none}
   .price-row{
-    grid-template-columns:1fr;gap:8px;
-    padding:16px;
+    grid-template-columns:1fr;gap:6px;
+    padding:12px 16px
   }
-  .pr-budget,.pr-mid,.pr-premium{flex-direction:row;align-items:center;justify-content:space-between;padding:6px 0;border-top:1px solid var(--line)}
+  .pr-budget,.pr-mid,.pr-premium{
+    flex-direction:row;align-items:center;justify-content:space-between;
+    padding:5px 0;border-top:1px solid var(--line)
+  }
   .tier-label{font-size:9px}
-  .tier-range{font-size:14px}
-  .pr-meta{flex-direction:row;flex-wrap:wrap;gap:6px;padding:0;padding-top:4px;border-top:1px solid var(--line)}
-  .hero{padding:32px 16px 24px}
-  .main-wrap{padding:0 16px 60px}
-  .header-inner{padding:10px 0}
+  .tier-range{font-size:13px}
+  .pr-meta{flex-direction:row;flex-wrap:wrap;gap:5px;padding:5px 0 0;border-top:1px solid var(--line)}
+  .hero{padding:20px 16px 0}
+  .how-strip,.intel-banner{padding-left:16px;padding-right:16px}
+  .main-wrap{padding:0 16px 48px}
+  .header-inner{padding:8px 0}
+  .cat-nav{overflow-x:auto;flex-wrap:nowrap}
+  .budget-table th,.budget-table td{padding:7px 10px;font-size:11.5px}
+  .gloss-grid{grid-template-columns:1fr}
+  .how-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:540px){
-  .hero-title{font-size:26px}
+  .hero-title{font-size:20px}
   .cat-btn-label{display:none}
-  .cat-btn{padding:8px 10px}
+  .cat-btn{padding:6px 9px}
   .patterns-grid{grid-template-columns:1fr}
-  .budget-grid{grid-template-columns:1fr}
+  .how-inner{grid-template-columns:1fr}
+  .how-step{border-right:none;border-bottom:1px solid var(--line)}
+  .how-step:last-child{border-bottom:none}
+  .hstat{padding:4px 10px}
+  .hstat-val{font-size:15px}
+  .budget-table{font-size:11px}
 }
 </style>
 </head>
@@ -409,72 +442,61 @@ body{
 <header class="site-header">
   <div class="header-inner">
     <a class="brand-mark" href="https://adamdegoat.github.io/renoradar/">
-      <div class="radar-icon">
-        <svg width="22" height="22" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="22" cy="22" r="18" stroke="#06b6d4" stroke-width="1.2" opacity="0.4"/>
-          <circle cx="22" cy="22" r="11" stroke="#06b6d4" stroke-width="1.2" opacity="0.6"/>
-          <circle cx="22" cy="22" r="4" stroke="#06b6d4" stroke-width="1.2"/>
-          <circle cx="22" cy="22" r="1.5" fill="#06b6d4"/>
-          <line x1="22" y1="22" x2="36" y2="10" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-          <path d="M22 4 A18 18 0 0 1 38 28" stroke="#06b6d4" stroke-width="1" fill="none" opacity="0.25"/>
-        </svg>
-      </div>
       <div class="brand-text">
         <span class="brand-name">RenoRadar</span>
         <span class="brand-tag">SG Renovation Price Index</span>
       </div>
     </a>
     <div class="header-meta">
-      <span class="h-pill live"><span class="live-dot"></span>Live Intelligence</span>
+      <span class="h-pill live"><span class="live-dot"></span>Live</span>
       <span class="h-pill">Updated 4 Jun 2026</span>
-      <span class="h-pill">64 Items Tracked</span>
-      <span class="h-pill">6 AI Patterns Active</span>
+      <span class="h-pill">64 items</span>
+      <span class="h-pill">6 AI patterns</span>
     </div>
   </div>
 </header>
 
 <div class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Free · No Signup · Updated Weekly</div>
-    <h1 class="hero-title">Know the <span>real price</span> before<br>you sign anything.</h1>
-    <p class="hero-sub">
-      Singapore renovation prices are <b>completely opaque</b> — most homeowners have no idea if their quote is fair or inflated.
-      RenoRadar tracks real market rates for every renovation item, updated weekly by AI scanning actual forum quotes.
-      <b>Use it alongside your contractor quote.</b>
-    </p>
-    <div class="hero-stats">
-      <div class="hstat"><span class="hstat-val">64</span><span class="hstat-label">Items tracked</span></div>
-      <div class="hstat"><span class="hstat-val">11</span><span class="hstat-label">Categories</span></div>
-      <div class="hstat"><span class="hstat-val">6</span><span class="hstat-label">Overcharge patterns</span></div>
-      <div class="hstat"><span class="hstat-val">Building...</span><span class="hstat-label">Market data points</span></div>
-    </div>
+  <div class="hero-top">
+    <h1 class="hero-title">Know the <span>real price</span> before you sign anything.</h1>
   </div>
-  <div class="hero-right">
-    <div class="howtouse-title">How to use this page</div>
-    <div class="step-row">
-      <div class="step-num">1</div>
-      <div class="step-text">Get your renovation quote from the contractor and <b>open it side by side</b> with this page.</div>
+  <p class="hero-sub">
+    Singapore renovation prices are <b>completely opaque</b> — most homeowners have no idea if their quote is fair or inflated.
+    RenoRadar tracks real market rates, updated weekly by AI scanning actual forum quotes. <b>Use it alongside your contractor quote.</b>
+  </p>
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-val">64</span><span class="hstat-label">items tracked</span></div>
+    <div class="hstat"><span class="hstat-val">11</span><span class="hstat-label">categories</span></div>
+    <div class="hstat"><span class="hstat-val">6</span><span class="hstat-label">overcharge patterns</span></div>
+    <div class="hstat"><span class="hstat-val">Building...</span><span class="hstat-label">market data points</span></div>
+  </div>
+</div>
+
+<div class="how-strip">
+  <div class="how-inner">
+    <div class="how-step">
+      <div class="how-num">1</div>
+      <div class="how-text">Get your quote and <b>open it side by side</b> with this page.</div>
     </div>
-    <div class="step-row">
-      <div class="step-num">2</div>
-      <div class="step-text">Click the <b>category</b> that matches each line item in your quote (Electrical, Tiling, etc.).</div>
+    <div class="how-step">
+      <div class="how-num">2</div>
+      <div class="how-text">Click the <b>category</b> matching each line item in your quote.</div>
     </div>
-    <div class="step-row">
-      <div class="step-num">3</div>
-      <div class="step-text">Find your item, check which <b>price tier</b> your quote falls into, and look at the overcharge risk rating.</div>
+    <div class="how-step">
+      <div class="how-num">3</div>
+      <div class="how-text">Check which <b>price tier</b> your quote falls into and the overcharge risk.</div>
     </div>
-    <div class="step-row">
-      <div class="step-num">4</div>
-      <div class="step-text">Scroll down to read the <b>AI-discovered contractor patterns</b> — then ask the right questions.</div>
+    <div class="how-step">
+      <div class="how-num">4</div>
+      <div class="how-text">Read the <b>AI-discovered patterns</b> and ask the right questions.</div>
     </div>
   </div>
 </div>
 
 <div class="intel-banner">
   <div class="intel-inner">
-    <span class="intel-icon">🧠</span>
     <div class="intel-text">
-      <b>Powered by L9 AI intelligence.</b> This system scrapes renovation forums 3× per week, extracts real prices using Claude AI, and autonomously invents new contractor overcharge patterns — validated through a 5-gate quality gauntlet before publishing.
+      <b>Powered by L9 AI.</b> Scrapes renovation forums 3x/week, extracts real prices using Claude AI, and autonomously invents new contractor overcharge patterns — validated through a 5-gate quality gauntlet before publishing.
     </div>
     <div class="intel-pills">
       <span class="intel-pill">Haiku extraction</span>
@@ -489,55 +511,54 @@ body{
 
   <!-- PRICE INDEX -->
   <div class="section-wrap">
-    <div class="section-h">📊 Price Index — Select a Category</div>
+    <div class="section-h">Price Index — Select a Category</div>
     <nav class="cat-nav" role="navigation" aria-label="Categories">
   <button class="cat-btn active" onclick="showCat('electrical')" id="btn-electrical">
-    <span class="cat-btn-icon">⚡</span>
+    <span class="cat-btn-icon">&#9889;</span>
     <span class="cat-btn-label">Electrical Works</span>
   </button>
   <button class="cat-btn " onclick="showCat('plumbing')" id="btn-plumbing">
-    <span class="cat-btn-icon">🔧</span>
+    <span class="cat-btn-icon">&#128295;</span>
     <span class="cat-btn-label">Plumbing Works</span>
   </button>
   <button class="cat-btn " onclick="showCat('hacking')" id="btn-hacking">
-    <span class="cat-btn-icon">🚧</span>
+    <span class="cat-btn-icon">&#128679;</span>
     <span class="cat-btn-label">Hacking & Demolition</span>
   </button>
   <button class="cat-btn " onclick="showCat('tiling')" id="btn-tiling">
-    <span class="cat-btn-icon">🟧</span>
+    <span class="cat-btn-icon">&#9647;</span>
     <span class="cat-btn-label">Tiling Works</span>
   </button>
   <button class="cat-btn " onclick="showCat('painting')" id="btn-painting">
-    <span class="cat-btn-icon">🎨</span>
+    <span class="cat-btn-icon">&#127912;</span>
     <span class="cat-btn-label">Painting Works</span>
   </button>
   <button class="cat-btn " onclick="showCat('carpentry')" id="btn-carpentry">
-    <span class="cat-btn-icon">🪚</span>
+    <span class="cat-btn-icon">&#129562;</span>
     <span class="cat-btn-label">Carpentry & Millwork</span>
   </button>
   <button class="cat-btn " onclick="showCat('false_ceiling')" id="btn-false_ceiling">
-    <span class="cat-btn-icon">⬜</span>
+    <span class="cat-btn-icon">&#9633;</span>
     <span class="cat-btn-label">False Ceiling</span>
   </button>
   <button class="cat-btn " onclick="showCat('flooring')" id="btn-flooring">
-    <span class="cat-btn-icon">🏠</span>
+    <span class="cat-btn-icon">&#127968;</span>
     <span class="cat-btn-label">Flooring</span>
   </button>
   <button class="cat-btn " onclick="showCat('aircon')" id="btn-aircon">
-    <span class="cat-btn-icon">❄️</span>
+    <span class="cat-btn-icon">&#10052;</span>
     <span class="cat-btn-label">Air Conditioning</span>
   </button>
   <button class="cat-btn " onclick="showCat('bathroom')" id="btn-bathroom">
-    <span class="cat-btn-icon">🛀</span>
+    <span class="cat-btn-icon">&#128704;</span>
     <span class="cat-btn-label">Bathroom Renovation</span>
   </button>
   <button class="cat-btn " onclick="showCat('kitchen')" id="btn-kitchen">
-    <span class="cat-btn-icon">🍳</span>
+    <span class="cat-btn-icon">&#127859;</span>
     <span class="cat-btn-label">Kitchen Renovation</span>
   </button>
 </nav>
-    <div style="margin-top:12px">
-      <div class="price-table-wrap">
+    <div class="price-table-wrap">
 <div class="cat-panel" id="panel-electrical" style="display:none">
   <div class="panel-header">
     <div class="panel-title-row">
@@ -545,7 +566,7 @@ body{
       <span class="panel-count">8 items tracked</span>
     </div>
     <p class="panel-desc">Power points, wiring, lighting and DB box installations</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Power points and DB box upgrades are the most frequently inflated items in SG renovation quotes.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Power points and DB box upgrades are the most frequently inflated items in SG renovation quotes.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -577,9 +598,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="electrical-five_pin_socket">
       <div class="pr-name">
@@ -603,9 +624,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="electrical-lighting_point">
       <div class="pr-name">
@@ -629,9 +650,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="electrical-ceiling_fan_point">
       <div class="pr-name">
@@ -655,9 +676,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="electrical-aircon_dedicated_circuit">
       <div class="pr-name">
@@ -681,9 +702,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 5%</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="electrical-db_box_10way">
       <div class="pr-name">
@@ -707,9 +728,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="electrical-db_box_20way">
       <div class="pr-name">
@@ -733,9 +754,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="electrical-switch_single">
       <div class="pr-name">
@@ -759,13 +780,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always ask for price per point, not a lump sum for all electrical works.</li><li>DB box upgrade is only necessary if adding 3+ new circuits. Most 4-room HDB do not need it.</li><li>Dedicated aircon circuits are required by code — do not let contractors skip them.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Always ask for price per point, not a lump sum for all electrical works.</li><li>DB box upgrade is only necessary if adding 3+ new circuits. Most 4-room HDB do not need it.</li><li>Dedicated aircon circuits are required by code — do not let contractors skip them.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-plumbing" style="display:none">
   <div class="panel-header">
@@ -774,7 +795,7 @@ body{
       <span class="panel-count">7 items tracked</span>
     </div>
     <p class="panel-desc">Water points, fixtures, water heaters and drainage</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Fixture supply-and-install bundles are a common padding point. Always ask to separate supply from labour.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Fixture supply-and-install bundles are a common padding point. Always ask to separate supply from labour.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -806,9 +827,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="plumbing-water_point_hot_cold">
       <div class="pr-name">
@@ -832,9 +853,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="plumbing-basin_tap">
       <div class="pr-name">
@@ -858,9 +879,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="plumbing-shower_mixer">
       <div class="pr-name">
@@ -884,9 +905,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="plumbing-water_heater_storage">
       <div class="pr-name">
@@ -910,9 +931,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 8%</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="plumbing-water_heater_instant">
       <div class="pr-name">
@@ -936,9 +957,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="plumbing-floor_trap">
       <div class="pr-name">
@@ -962,13 +983,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Ask for labour-only price if you are supplying your own taps and fixtures.</li><li>Storage water heaters last longer than instant heaters but cost more to run.</li><li>Check if waterproofing is included in bathroom plumbing quotes — it usually is not.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Ask for labour-only price if you are supplying your own taps and fixtures.</li><li>Storage water heaters last longer than instant heaters but cost more to run.</li><li>Check if waterproofing is included in bathroom plumbing quotes — it usually is not.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-hacking" style="display:none">
   <div class="panel-header">
@@ -977,7 +998,7 @@ body{
       <span class="panel-count">5 items tracked</span>
     </div>
     <p class="panel-desc">Tile removal, wall hacking and partition works</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Hacking is often quoted as a lump sum. Always request itemised sqft pricing.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Hacking is often quoted as a lump sum. Always request itemised sqft pricing.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -1009,9 +1030,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="hacking-wall_tile_hacking">
       <div class="pr-name">
@@ -1035,9 +1056,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="hacking-brick_wall_hacking">
       <div class="pr-name">
@@ -1061,9 +1082,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 6%</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="hacking-drywall_partition_erect">
       <div class="pr-name">
@@ -1087,9 +1108,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="hacking-non_structural_wall_removal">
       <div class="pr-name">
@@ -1113,13 +1134,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 4%</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +4%</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Hacking price depends heavily on the material being removed. Mosaic tiles cost more to hack.</li><li>Always confirm debris disposal is included in the quote.</li><li>For non-structural walls, get written confirmation it is non-structural before proceeding.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Hacking price depends heavily on the material being removed. Mosaic tiles cost more to hack.</li><li>Always confirm debris disposal is included in the quote.</li><li>For non-structural walls, get written confirmation it is non-structural before proceeding.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-tiling" style="display:none">
   <div class="panel-header">
@@ -1128,7 +1149,7 @@ body{
       <span class="panel-count">6 items tracked</span>
     </div>
     <p class="panel-desc">Floor and wall tiling for all rooms and wet areas</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Tile wastage should be 10% max. Contractors quoting 20-30% wastage are overcharging on materials.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Tile wastage should be 10% max. Contractors quoting 20-30% wastage are overcharging on materials.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -1160,9 +1181,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 7%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +7%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="tiling-wall_tiling_standard">
       <div class="pr-name">
@@ -1186,9 +1207,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 5%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="tiling-wet_area_tiling">
       <div class="pr-name">
@@ -1212,9 +1233,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="tiling-mosaic_feature_tiles">
       <div class="pr-name">
@@ -1238,9 +1259,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="tiling-outdoor_balcony_tiles">
       <div class="pr-name">
@@ -1264,9 +1285,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="tiling-regrouting_only">
       <div class="pr-name">
@@ -1290,13 +1311,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Confirm whether the quote includes tile supply or is labour-only.</li><li>Large-format tiles (600x600 and above) cost more to lay due to difficulty.</li><li>Wet area tiling requires waterproofing beneath — always confirm it is included.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Confirm whether the quote includes tile supply or is labour-only.</li><li>Large-format tiles (600x600 and above) cost more to lay due to difficulty.</li><li>Wet area tiling requires waterproofing beneath — always confirm it is included.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-painting" style="display:none">
   <div class="panel-header">
@@ -1305,7 +1326,7 @@ body{
       <span class="panel-count">5 items tracked</span>
     </div>
     <p class="panel-desc">Interior walls, ceilings and feature surfaces</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Painting is the most commonly overcharged item per sqft in Singapore. Always get at least 3 quotes.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Painting is the most commonly overcharged item per sqft in Singapore. Always get at least 3 quotes.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -1337,9 +1358,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 10%</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +10%</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="painting-ceiling_painting">
       <div class="pr-name">
@@ -1363,9 +1384,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 8%</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="painting-full_4room_hdb">
       <div class="pr-name">
@@ -1389,9 +1410,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 12%</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +12%</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="painting-full_5room_hdb">
       <div class="pr-name">
@@ -1415,9 +1436,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 12%</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +12%</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="painting-feature_wall">
       <div class="pr-name">
@@ -1441,13 +1462,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Insist on Nippon or Dulux brand — budget contractors often use unknown brands at premium prices.</li><li>2 coats is standard. More coats are only needed for dark-to-light colour changes.</li><li>Confirm the quote covers furniture protection, masking and touch-up after renovation.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Insist on Nippon or Dulux brand — budget contractors often use unknown brands at premium prices.</li><li>2 coats is standard. More coats are only needed for dark-to-light colour changes.</li><li>Confirm the quote covers furniture protection, masking and touch-up after renovation.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-carpentry" style="display:none">
   <div class="panel-header">
@@ -1456,7 +1477,7 @@ body{
       <span class="panel-count">7 items tracked</span>
     </div>
     <p class="panel-desc">Built-in wardrobes, kitchen cabinets, TV consoles and custom furniture</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Carpentry is the highest-value and most padding-prone category. Always ask for material specification in writing.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Carpentry is the highest-value and most padding-prone category. Always ask for material specification in writing.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -1488,9 +1509,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 6%</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="carpentry-kitchen_cabinet_full">
       <div class="pr-name">
@@ -1514,9 +1535,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 7%</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +7%</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="carpentry-kitchen_cabinet_bottom">
       <div class="pr-name">
@@ -1540,9 +1561,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="carpentry-shoe_cabinet">
       <div class="pr-name">
@@ -1566,9 +1587,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="carpentry-tv_console">
       <div class="pr-name">
@@ -1592,9 +1613,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="carpentry-study_desk">
       <div class="pr-name">
@@ -1618,9 +1639,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="carpentry-feature_shelving">
       <div class="pr-name">
@@ -1644,13 +1665,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always specify the board material: HDB-grade particleboard vs solid plywood vs moisture-resistant board.</li><li>Price per linear foot should include both carcass AND doors/panels — not just carcass.</li><li>Soft-close hinges and drawer systems should be standard, not a premium add-on.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Always specify the board material: HDB-grade particleboard vs solid plywood vs moisture-resistant board.</li><li>Price per linear foot should include both carcass AND doors/panels — not just carcass.</li><li>Soft-close hinges and drawer systems should be standard, not a premium add-on.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-false_ceiling" style="display:none">
   <div class="panel-header">
@@ -1659,7 +1680,7 @@ body{
       <span class="panel-count">4 items tracked</span>
     </div>
     <p class="panel-desc">Gypsum board ceilings, cove lighting and recessed features</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Cove lighting runs are sometimes quoted per linear foot without specifying LED strip inclusion. Always confirm.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Cove lighting runs are sometimes quoted per linear foot without specifying LED strip inclusion. Always confirm.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -1691,9 +1712,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="false_ceiling-l_box_cove">
       <div class="pr-name">
@@ -1717,9 +1738,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="false_ceiling-cove_with_led">
       <div class="pr-name">
@@ -1743,9 +1764,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="false_ceiling-recessed_cutout">
       <div class="pr-name">
@@ -1769,13 +1790,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>False ceilings reduce ceiling height by 4-6 inches — confirm final height suits your space.</li><li>LED cove lighting consumption is minimal; it is the installation that costs, not running it.</li><li>Moisture-resistant gypsum board is required for bathrooms and kitchen — confirm board grade.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>False ceilings reduce ceiling height by 4-6 inches — confirm final height suits your space.</li><li>LED cove lighting consumption is minimal; it is the installation that costs, not running it.</li><li>Moisture-resistant gypsum board is required for bathrooms and kitchen — confirm board grade.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-flooring" style="display:none">
   <div class="panel-header">
@@ -1784,7 +1805,7 @@ body{
       <span class="panel-count">5 items tracked</span>
     </div>
     <p class="panel-desc">Vinyl, laminate, timber and epoxy floor installations</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Vinyl flooring quality varies enormously. Budget range often uses 2mm wear-layer vinyl; mid-range uses 4-6mm.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Vinyl flooring quality varies enormously. Budget range often uses 2mm wear-layer vinyl; mid-range uses 4-6mm.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -1816,9 +1837,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 9%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +9%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="flooring-laminate_flooring">
       <div class="pr-name">
@@ -1842,9 +1863,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="flooring-engineered_timber">
       <div class="pr-name">
@@ -1868,9 +1889,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="flooring-solid_timber">
       <div class="pr-name">
@@ -1894,9 +1915,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 5%</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="flooring-epoxy_flooring">
       <div class="pr-name">
@@ -1920,13 +1941,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always ask for the wear layer thickness on vinyl — 4mm minimum for HDB residential use.</li><li>Laminate is not waterproof — do not install in bathrooms or wet kitchens.</li><li>For timber, engineered is more dimensionally stable than solid in Singapore humidity.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Always ask for the wear layer thickness on vinyl — 4mm minimum for HDB residential use.</li><li>Laminate is not waterproof — do not install in bathrooms or wet kitchens.</li><li>For timber, engineered is more dimensionally stable than solid in Singapore humidity.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-aircon" style="display:none">
   <div class="panel-header">
@@ -1935,7 +1956,7 @@ body{
       <span class="panel-count">6 items tracked</span>
     </div>
     <p class="panel-desc">Split system installations, servicing and top-ups</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Chemical wash upsells for new units under 2 years old are unnecessary and a common revenue tactic.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Chemical wash upsells for new units under 2 years old are unnecessary and a common revenue tactic.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -1967,9 +1988,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 5%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="aircon-system_3">
       <div class="pr-name">
@@ -1993,9 +2014,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 5%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="aircon-system_4">
       <div class="pr-name">
@@ -2019,9 +2040,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 6%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="aircon-gas_top_up">
       <div class="pr-name">
@@ -2045,9 +2066,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="aircon-general_service">
       <div class="pr-name">
@@ -2071,9 +2092,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 8%</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="aircon-chemical_overhaul">
       <div class="pr-name">
@@ -2097,13 +2118,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>For new installations, get at least 3 quotes — prices vary by 30-40% between contractors.</li><li>Mitsubishi, Daikin, and Panasonic are the most reliable brands for SG climate.</li><li>Confirm piping length included in the quote — excess piping is billed separately.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>For new installations, get at least 3 quotes — prices vary by 30-40% between contractors.</li><li>Mitsubishi, Daikin, and Panasonic are the most reliable brands for SG climate.</li><li>Confirm piping length included in the quote — excess piping is billed separately.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-bathroom" style="display:none">
   <div class="panel-header">
@@ -2112,7 +2133,7 @@ body{
       <span class="panel-count">5 items tracked</span>
     </div>
     <p class="panel-desc">Full and partial bathroom renovations for HDB and condos</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Full bathroom lump sum quotes often hide inflated fixture costs. Ask for itemised pricing.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Full bathroom lump sum quotes often hide inflated fixture costs. Ask for itemised pricing.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -2144,9 +2165,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 10%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +10%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="bathroom-partial_reno_tiling">
       <div class="pr-name">
@@ -2170,9 +2191,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="bathroom-toilet_bowl">
       <div class="pr-name">
@@ -2196,9 +2217,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="bathroom-vanity_with_basin">
       <div class="pr-name">
@@ -2222,9 +2243,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="bathroom-shower_screen">
       <div class="pr-name">
@@ -2248,13 +2269,13 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Always confirm waterproofing is included — it costs $300-600 extra if not.</li><li>Rectified tiles (precisely cut edges) are needed for large-format bathroom tiles.</li><li>Install a shower screen if your budget allows — it dramatically reduces cleaning effort.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Always confirm waterproofing is included — it costs $300-600 extra if not.</li><li>Rectified tiles (precisely cut edges) are needed for large-format bathroom tiles.</li><li>Install a shower screen if your budget allows — it dramatically reduces cleaning effort.</li></ul></div>
 </div>
 <div class="cat-panel" id="panel-kitchen" style="display:none">
   <div class="panel-header">
@@ -2263,7 +2284,7 @@ body{
       <span class="panel-count">6 items tracked</span>
     </div>
     <p class="panel-desc">Full kitchen overhauls, cabinets, countertops and appliances</p>
-    <div class="cat-warning">⚠️ <strong>Watch out:</strong> Kitchen renovation is the highest-value category. Countertop material upgrades are a common upsell from mid to premium tier.</div>
+    <div class="cat-warning"><strong>Watch out:</strong> Kitchen renovation is the highest-value category. Countertop material upgrades are a common upsell from mid to premium tier.</div>
   </div>
   <div class="price-table-header">
     <div class="pth-name">Item</div>
@@ -2295,9 +2316,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 8%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="kitchen-kitchen_cabinets_only">
       <div class="pr-name">
@@ -2321,9 +2342,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 6%</span>
-        <span class="risk-high">⚠ High Risk</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
+        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="kitchen-countertop_solid_surface">
       <div class="pr-name">
@@ -2347,9 +2368,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="kitchen-countertop_quartz">
       <div class="pr-name">
@@ -2373,9 +2394,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-up">↑ 4%</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-up">&#8593; Prices rising +4%</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="kitchen-countertop_marble">
       <div class="pr-name">
@@ -2399,9 +2420,9 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-low">✓ Low</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-low">&#10003; Usually fair</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>    <div class="price-row" id="kitchen-kitchen_hood_hob">
       <div class="pr-name">
@@ -2425,146 +2446,139 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="trend-stable">→ Stable</span>
-        <span class="risk-med">◈ Watch</span>
-        <span class="conf-seed" title="Seeded benchmark">◌ Seeded</span>
+        <span class="meta-trend trend-stable">Prices holding steady</span>
+        <span class="meta-risk risk-med">Worth checking</span>
+        <span class="meta-conf">Starting estimate</span>
       </div>
     </div>
   </div>
-  <div class="cat-tips"><div class="tips-title">💡 Pro Tips for This Category</div><ul><li>Quartz is the best value countertop for SG kitchens — durable, low maintenance, heat resistant.</li><li>Confirm your kitchen is a wet or dry kitchen — this affects cabinet material requirements.</li><li>Get the carpentry and countertop quoted separately so you can compare independently.</li></ul></div>
+  <div class="cat-tips"><div class="tips-title">Pro Tips for This Category</div><ul><li>Quartz is the best value countertop for SG kitchens — durable, low maintenance, heat resistant.</li><li>Confirm your kitchen is a wet or dry kitchen — this affects cabinet material requirements.</li><li>Get the carpentry and countertop quoted separately so you can compare independently.</li></ul></div>
 </div>
-      </div>
     </div>
   </div>
 
   <!-- OVERCHARGE PATTERNS -->
   <div class="section-wrap">
-    <div class="section-h">🔬 AI-Discovered Contractor Overcharge Patterns — 6 Active</div>
+    <div class="section-h">AI-Discovered Contractor Overcharge Patterns — 6 Active</div>
     <div class="patterns-grid">
 <div class="pattern-card">
   <div class="pattern-header">
-    <div>
+    <div class="pattern-header-left">
       <span class="pattern-cat">Carpentry</span>
-      <span class="pattern-source">🔬 Research Seeded</span>
+      <span class="pattern-source">Research Seeded</span>
     </div>
     <div class="pattern-prob" title="Probability this pattern results in overcharging">74% overcharge risk</div>
   </div>
   <h3 class="pattern-name">Vague Carpentry Material Specification</h3>
-  <p class="pattern-trigger"><strong>Trigger:</strong> Carpentry line items list no material grade, board type or brand</p>
   <p class="pattern-insight">When carpentry quotes omit material specification, contractors frequently substitute lower-grade particleboard instead of moisture-resistant plywood, while charging mid-range prices.</p>
   <div class="pattern-ask">
-    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask contractor to specify: board type (MR/moisture-resistant plywood), door material (acrylic/laminate/solid wood), and hardware brand (Blum/Hettich/Hafele).</span>
   </div>
   <div class="pattern-footer">
     <span>Avg overcharge: +28%</span>
     <span>Confidence: 72%</span>
-    <span>Discovered: 2026-06-04</span>
+    <span>2026-06-04</span>
   </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div>
+    <div class="pattern-header-left">
       <span class="pattern-cat">Painting</span>
-      <span class="pattern-source">🔬 Research Seeded</span>
+      <span class="pattern-source">Research Seeded</span>
     </div>
     <div class="pattern-prob" title="Probability this pattern results in overcharging">68% overcharge risk</div>
   </div>
   <h3 class="pattern-name">Painting Charged Per Room Instead of Per SqFt</h3>
-  <p class="pattern-trigger"><strong>Trigger:</strong> Painting quoted as flat rate per room rather than per sqft</p>
   <p class="pattern-insight">Per-room flat rates consistently exceed per-sqft pricing for larger rooms (master bedroom, living room). Common for 5-room HDB where rooms are bigger.</p>
   <div class="pattern-ask">
-    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask for a per-sqft rate and calculate total area yourself. Standard HDB wall height is 2.6m — multiply perimeter by height for total sqft.</span>
   </div>
   <div class="pattern-footer">
     <span>Avg overcharge: +22%</span>
     <span>Confidence: 70%</span>
-    <span>Discovered: 2026-06-04</span>
+    <span>2026-06-04</span>
   </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div>
+    <div class="pattern-header-left">
       <span class="pattern-cat">Tiling</span>
-      <span class="pattern-source">🔬 Research Seeded</span>
+      <span class="pattern-source">Research Seeded</span>
     </div>
     <div class="pattern-prob" title="Probability this pattern results in overcharging">81% overcharge risk</div>
   </div>
   <h3 class="pattern-name">Tile Wastage Overestimation</h3>
-  <p class="pattern-trigger"><strong>Trigger:</strong> Quote includes more than 12% tile wastage</p>
   <p class="pattern-insight">Industry standard tile wastage is 8-10%. Contractors quoting 20-25% wastage are padding the material cost. This is most common for floor tiles and large-format tiles.</p>
   <div class="pattern-ask">
-    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask contractor to justify any wastage above 10%. For straight-lay patterns 10% is sufficient. Herringbone or diagonal patterns may justify 12-15%.</span>
   </div>
   <div class="pattern-footer">
     <span>Avg overcharge: +15%</span>
     <span>Confidence: 78%</span>
-    <span>Discovered: 2026-06-04</span>
+    <span>2026-06-04</span>
   </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div>
+    <div class="pattern-header-left">
       <span class="pattern-cat">Electrical</span>
-      <span class="pattern-source">🔬 Research Seeded</span>
+      <span class="pattern-source">Research Seeded</span>
     </div>
     <div class="pattern-prob" title="Probability this pattern results in overcharging">66% overcharge risk</div>
   </div>
   <h3 class="pattern-name">DB Box Upsell for Small Flats</h3>
-  <p class="pattern-trigger"><strong>Trigger:</strong> 20-way DB box upgrade quoted for 3 or 4-room HDB</p>
   <p class="pattern-insight">A 20-way DB box is generally unnecessary for 3 and 4-room HDB flats. Contractors upsell to the larger unit citing 'future-proofing' — the 10-way box handles all standard circuits comfortably.</p>
   <div class="pattern-ask">
-    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask your contractor to list all planned circuits. Count them. If under 10, a 10-way DB box is sufficient.</span>
   </div>
   <div class="pattern-footer">
     <span>Avg overcharge: +35%</span>
     <span>Confidence: 68%</span>
-    <span>Discovered: 2026-06-04</span>
+    <span>2026-06-04</span>
   </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div>
+    <div class="pattern-header-left">
       <span class="pattern-cat">Aircon</span>
-      <span class="pattern-source">🔬 Research Seeded</span>
+      <span class="pattern-source">Research Seeded</span>
     </div>
     <div class="pattern-prob" title="Probability this pattern results in overcharging">79% overcharge risk</div>
   </div>
   <h3 class="pattern-name">Chemical Wash Upsell on Young Aircon Units</h3>
-  <p class="pattern-trigger"><strong>Trigger:</strong> Chemical overhaul recommended for aircon units under 2 years old</p>
   <p class="pattern-insight">Chemical overhaul is a deep cleaning service necessary every 2-3 years of heavy use. Recommending it for units under 2 years old is almost always unnecessary and is a revenue tactic.</p>
   <div class="pattern-ask">
-    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Ask the technician to show you the state of the evaporator coil. If it is not visibly scaled or clogged, a general service is sufficient.</span>
   </div>
   <div class="pattern-footer">
     <span>Avg overcharge: +100%</span>
     <span>Confidence: 75%</span>
-    <span>Discovered: 2026-06-04</span>
+    <span>2026-06-04</span>
   </div>
 </div>
 <div class="pattern-card">
   <div class="pattern-header">
-    <div>
+    <div class="pattern-header-left">
       <span class="pattern-cat">Kitchen</span>
-      <span class="pattern-source">🔬 Research Seeded</span>
+      <span class="pattern-source">Research Seeded</span>
     </div>
     <div class="pattern-prob" title="Probability this pattern results in overcharging">71% overcharge risk</div>
   </div>
   <h3 class="pattern-name">Lump Sum Kitchen Quote Without Itemisation</h3>
-  <p class="pattern-trigger"><strong>Trigger:</strong> Full kitchen renovation quoted as single lump sum with no line-item breakdown</p>
   <p class="pattern-insight">Unitemised kitchen lump sums make it impossible to compare against market rates. This is most common when ID firms absorb all sub-contractor work under one number — the markup on individual items can reach 40-60%.</p>
   <div class="pattern-ask">
-    <span class="pattern-ask-label">❓ Ask your contractor:</span>
+    <span class="pattern-ask-label">Ask your contractor:</span>
     <span class="pattern-ask-text">Always request a full itemised quote: carpentry (per linear ft), countertop (per linear ft), tiling (per sqft), hacking (per sqft), plumbing (per point), hood/hob (separate). Compare each item against RenoRadar.</span>
   </div>
   <div class="pattern-footer">
     <span>Avg overcharge: +32%</span>
     <span>Confidence: 69%</span>
-    <span>Discovered: 2026-06-04</span>
+    <span>2026-06-04</span>
   </div>
 </div>
     </div>
@@ -2572,63 +2586,57 @@ body{
 
   <!-- BUDGET GUIDE -->
   <div class="section-wrap">
-    <div class="section-h">💰 Quick Budget Reference — Full Renovation by Flat Type</div>
-    <div class="budget-grid">
-  <div class="budget-card">
-    <div class="budget-flat">3-Room HDB</div>
-    <div class="budget-sqm">~65 sqm</div>
-    <div class="budget-range-row">
-      <div class="budget-tier budget-b">Budget<br><strong>$25k–$45k</strong></div>
-      <div class="budget-tier budget-m">Mid-Range<br><strong>$45k–$75k</strong></div>
-      <div class="budget-tier budget-p">Premium<br><strong>$75k–$130k</strong></div>
-    </div>
-    <div class="budget-note">Typical for first-time renovation. Budget tier usually covers essential works only.</div>
-  </div>
-  <div class="budget-card">
-    <div class="budget-flat">4-Room HDB</div>
-    <div class="budget-sqm">~90 sqm</div>
-    <div class="budget-range-row">
-      <div class="budget-tier budget-b">Budget<br><strong>$35k–$60k</strong></div>
-      <div class="budget-tier budget-m">Mid-Range<br><strong>$60k–$100k</strong></div>
-      <div class="budget-tier budget-p">Premium<br><strong>$100k–$180k</strong></div>
-    </div>
-    <div class="budget-note">Most popular renovation scope. Mid-range typically covers full carpentry + new bathroom.</div>
-  </div>
-  <div class="budget-card">
-    <div class="budget-flat">5-Room HDB</div>
-    <div class="budget-sqm">~110 sqm</div>
-    <div class="budget-range-row">
-      <div class="budget-tier budget-b">Budget<br><strong>$45k–$75k</strong></div>
-      <div class="budget-tier budget-m">Mid-Range<br><strong>$75k–$130k</strong></div>
-      <div class="budget-tier budget-p">Premium<br><strong>$130k–$220k</strong></div>
-    </div>
-    <div class="budget-note">Larger floor area means carpentry and flooring costs dominate. Prioritise those categories.</div>
-  </div>
-  <div class="budget-card">
-    <div class="budget-flat">Condo (2BR)</div>
-    <div class="budget-sqm">~70–90 sqm</div>
-    <div class="budget-range-row">
-      <div class="budget-tier budget-b">Budget<br><strong>$40k–$65k</strong></div>
-      <div class="budget-tier budget-m">Mid-Range<br><strong>$65k–$110k</strong></div>
-      <div class="budget-tier budget-p">Premium<br><strong>$110k–$200k</strong></div>
-    </div>
-    <div class="budget-note">Condo management approval and working hours restrictions add cost and time to any renovation.</div>
-  </div>
+    <div class="section-h">Quick Budget Reference — Full Renovation by Flat Type</div>
+    <div class="budget-table-wrap">
+  <table class="budget-table">
+    <thead>
+      <tr>
+        <th class="bt-tier-col"></th>
+        <th class="bt-flat-col">3-Room HDB<span class="bt-sqm">~65 sqm</span></th>
+        <th class="bt-flat-col">4-Room HDB<span class="bt-sqm">~90 sqm</span></th>
+        <th class="bt-flat-col">5-Room HDB<span class="bt-sqm">~110 sqm</span></th>
+        <th class="bt-flat-col">Condo 2BR<span class="bt-sqm">~70–90 sqm</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bt-row bt-row-b">
+        <td class="bt-tier-label">Budget</td>
+        <td>$25k – $45k</td>
+        <td>$35k – $60k</td>
+        <td>$45k – $75k</td>
+        <td>$40k – $65k</td>
+      </tr>
+      <tr class="bt-row bt-row-m">
+        <td class="bt-tier-label">Mid-Range</td>
+        <td>$45k – $75k</td>
+        <td>$60k – $100k</td>
+        <td>$75k – $130k</td>
+        <td>$65k – $110k</td>
+      </tr>
+      <tr class="bt-row bt-row-p">
+        <td class="bt-tier-label">Premium</td>
+        <td>$75k – $130k</td>
+        <td>$100k – $180k</td>
+        <td>$130k – $220k</td>
+        <td>$110k – $200k</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-    <p style="font-size:11.5px;color:var(--dim);margin-top:12px;line-height:1.6">
-      ⚠️ These are indicative ranges for a <em>full renovation</em> (all rooms, all categories). Actual cost depends on scope, materials chosen, and which contractor tier you engage. Use the price index above for individual item verification.
+    <p style="font-size:11px;color:var(--dim);margin-top:8px;line-height:1.5">
+      Indicative ranges for a full renovation (all rooms, all categories). Actual cost depends on scope, materials chosen, and contractor tier. Use the price index above for individual item verification.
     </p>
   </div>
 
   <!-- GLOSSARY -->
   <div class="section-wrap">
-    <div class="section-h">📖 Renovation Terms Explained</div>
+    <div class="section-h">Renovation Terms Explained</div>
     <dl class="gloss-grid"><div class="gloss-item"><dt class="gloss-term">DB Box</dt><dd class="gloss-def">Distribution Board. The electrical panel that distributes power to different circuits in your home. Upgrading it adds more circuit capacity.</dd></div><div class="gloss-item"><dt class="gloss-term">PSF / Per SqFt</dt><dd class="gloss-def">Price per square foot. Common unit for tiling, flooring, painting and hacking. Multiply by your room area to get total cost.</dd></div><div class="gloss-item"><dt class="gloss-term">Linear Ft</dt><dd class="gloss-def">Measurement along a straight line. Used for carpentry (wardrobes, kitchen cabinets), countertops and false ceiling runs.</dd></div><div class="gloss-item"><dt class="gloss-term">R32 / R410A</dt><dd class="gloss-def">Types of refrigerant gas used in air conditioning systems. R32 is newer and more eco-friendly. Top-up is only needed if there is a leak.</dd></div><div class="gloss-item"><dt class="gloss-term">Rectified Tiles</dt><dd class="gloss-def">Tiles cut to precise dimensions with sharp edges. Required for large-format tiles and minimal grout lines.</dd></div><div class="gloss-item"><dt class="gloss-term">Waterproofing</dt><dd class="gloss-def">A membrane layer applied under bathroom tiles to prevent water seepage. Critical — never skip it.</dd></div><div class="gloss-item"><dt class="gloss-term">Fancoil</dt><dd class="gloss-def">The indoor unit of a split air conditioning system — the part mounted on your wall or ceiling.</dd></div><div class="gloss-item"><dt class="gloss-term">Chemical Overhaul</dt><dd class="gloss-def">A deep cleaning of the aircon evaporator coil using chemical solution. Only needed every 2-3 years, not every service.</dd></div><div class="gloss-item"><dt class="gloss-term">MR Board</dt><dd class="gloss-def">Moisture-Resistant board. Used in wet areas like kitchen and bathrooms. Budget contractors often substitute standard particleboard.</dd></div><div class="gloss-item"><dt class="gloss-term">Hacking</dt><dd class="gloss-def">Demolition work — removing existing tiles, walls, or structures before new installations. Priced per sqft.</dd></div><div class="gloss-item"><dt class="gloss-term">L-Box</dt><dd class="gloss-def">The recessed cove in a false ceiling that holds LED strip lighting. Creates an indirect lighting effect.</dd></div><div class="gloss-item"><dt class="gloss-term">ID Firm</dt><dd class="gloss-def">Interior Design firm. Full-service renovation companies that design and manage the entire project. Premium pricing but full coordination.</dd></div></dl>
   </div>
 
   <!-- FAQ -->
   <div class="section-wrap">
-    <div class="section-h">❓ Frequently Asked Questions</div>
+    <div class="section-h">Frequently Asked Questions</div>
     <details class="faq-item"><summary class="faq-q">How often is this data updated?</summary><div class="faq-a">The RenoRadar intelligence engine scrapes renovation forums three times a week (Monday, Wednesday, Friday) and updates price benchmarks every Wednesday night. The L9 AI engine also discovers new overcharge patterns weekly.</div></details><details class="faq-item"><summary class="faq-q">Are these prices inclusive of GST?</summary><div class="faq-a">Most renovation contractor quotes in Singapore are GST-exclusive. Add 9% on top of all prices shown here when comparing against your contractor's final invoice.</div></details><details class="faq-item"><summary class="faq-q">Why are there three price tiers?</summary><div class="faq-a">Budget tier reflects direct sub-contractors with no project management overhead. Mid-range covers small renovation firms with some design support. Premium covers full-service ID firms that manage the entire project — you pay for their coordination, not just the work.</div></details><details class="faq-item"><summary class="faq-q">My quote is higher than the Premium tier — is that normal?</summary><div class="faq-a">Not necessarily. Very high quotes can reflect: (1) condo surcharges for management restrictions, (2) unusual scope like structural work, (3) premium material choices, or (4) contractor padding. Use the overcharge patterns above to investigate.</div></details><details class="faq-item"><summary class="faq-q">Should I always go for the cheapest contractor?</summary><div class="faq-a">No. Budget tier contractors are legitimate, but they require more active supervision. Payment terms, material specifications and timeline commitments must all be documented in writing regardless of which tier you choose.</div></details><details class="faq-item"><summary class="faq-q">How do I use this page alongside my actual quote?</summary><div class="faq-a">Open your contractor quote on one screen and RenoRadar on another. Go through your quote line by line. For each item, find the matching category and item here, check which tier your quote falls into, and look at the overcharge risk rating.</div></details>
   </div>
 
@@ -2636,22 +2644,18 @@ body{
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand">RenoRadar</div>
-    <div class="footer-meta">
-      Singapore Renovation Price Index
-      <span class="footer-sep">·</span>
-      Built by <a href="https://adamdegoat.github.io">Adamdegoat</a>
-      <span class="footer-sep">·</span>
-      <a href="https://instagram.com/adamdegoat" target="_blank" rel="noopener">@adamdegoat</a>
-      <span class="footer-sep">·</span>
-      Powered by <a href="https://anthropic.com">Claude AI</a>
-      <span class="footer-sep">·</span>
-      Updated 4 Jun 2026
-    </div>
+    <span class="footer-brand">RenoRadar</span>
+    <span class="footer-sep">·</span>
+    Singapore Renovation Price Index
+    <span class="footer-sep">·</span>
+    Built by <a href="https://adamdegoat.github.io">Adamdegoat</a>
+    <span class="footer-sep">·</span>
+    Powered by <a href="https://anthropic.com">Claude AI</a>
+    <span class="footer-sep">·</span>
+    Updated 4 Jun 2026
     <div class="footer-disclaimer">
       Prices are market benchmarks based on publicly available renovation quotes and forum data from Singapore.
-      They represent typical ranges and are not guaranteed quotes. Always obtain multiple written quotations
-      before committing to any renovation work.
+      They represent typical ranges and are not guaranteed quotes. Always obtain multiple written quotations before committing to any renovation work.
     </div>
   </div>
 </footer>
