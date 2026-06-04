@@ -294,21 +294,14 @@ body{
 .tier-sub{font-size:9px;color:var(--dim)}
 
 .pr-meta{
-  display:flex;flex-direction:column;gap:3px;justify-content:center;
+  display:flex;flex-direction:column;gap:4px;justify-content:center;
   padding:0 6px
 }
-.meta-trend,.meta-risk,.meta-conf{
-  font-size:11px;white-space:nowrap;display:block
-}
-.meta-conf{
-  font-size:10px;color:var(--dim)
-}
-.trend-up{color:var(--red);font-weight:600}
-.trend-down{color:var(--green);font-weight:600}
-.trend-stable{color:var(--muted)}
-.risk-high{color:var(--amber);font-weight:600}
-.risk-med{color:var(--muted)}
-.risk-low{color:var(--green)}
+.verdict{font-size:11px;font-weight:600;display:block;white-space:normal;line-height:1.4}
+.verdict-high{color:var(--amber)}
+.verdict-med{color:var(--blue)}
+.verdict-low{color:var(--green)}
+.verdict-note{font-size:10px;color:var(--red);display:block;margin-top:2px}
 
 /* ── CATEGORY TIPS ── */
 .cat-tips{
@@ -654,7 +647,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-high" id="electrical-power_point_13a">
@@ -679,9 +672,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="electrical-five_pin_socket">
       <div class="pr-name">
@@ -705,9 +696,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="electrical-lighting_point">
       <div class="pr-name">
@@ -731,9 +720,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="electrical-ceiling_fan_point">
       <div class="pr-name">
@@ -757,9 +744,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="electrical-aircon_dedicated_circuit">
       <div class="pr-name">
@@ -783,9 +768,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span><span class="verdict-note">&#8593; Prices trending up (+5%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="electrical-db_box_10way">
       <div class="pr-name">
@@ -809,9 +792,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="electrical-db_box_20way">
       <div class="pr-name">
@@ -835,9 +816,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="electrical-switch_single">
       <div class="pr-name">
@@ -861,9 +840,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>
   </div>
@@ -883,7 +860,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="plumbing-water_point_cold">
@@ -908,9 +885,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="plumbing-water_point_hot_cold">
       <div class="pr-name">
@@ -934,9 +909,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="plumbing-basin_tap">
       <div class="pr-name">
@@ -960,9 +933,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="plumbing-shower_mixer">
       <div class="pr-name">
@@ -986,9 +957,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="plumbing-water_heater_storage">
       <div class="pr-name">
@@ -1012,9 +981,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span><span class="verdict-note">&#8593; Prices trending up (+8%)</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="plumbing-water_heater_instant">
       <div class="pr-name">
@@ -1038,9 +1005,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="plumbing-floor_trap">
       <div class="pr-name">
@@ -1064,9 +1029,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>
   </div>
@@ -1086,7 +1049,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="hacking-floor_tile_hacking">
@@ -1111,9 +1074,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="hacking-wall_tile_hacking">
       <div class="pr-name">
@@ -1137,9 +1098,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="hacking-brick_wall_hacking">
       <div class="pr-name">
@@ -1163,9 +1122,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span><span class="verdict-note">&#8593; Prices trending up (+6%)</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="hacking-drywall_partition_erect">
       <div class="pr-name">
@@ -1189,9 +1146,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="hacking-non_structural_wall_removal">
       <div class="pr-name">
@@ -1215,9 +1170,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +4%</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span><span class="verdict-note">&#8593; Prices trending up (+4%)</span>
       </div>
     </div>
   </div>
@@ -1237,7 +1190,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="tiling-floor_tiling_standard">
@@ -1262,9 +1215,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +7%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+7%)</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="tiling-wall_tiling_standard">
       <div class="pr-name">
@@ -1288,9 +1239,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+5%)</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="tiling-wet_area_tiling">
       <div class="pr-name">
@@ -1314,9 +1263,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="tiling-mosaic_feature_tiles">
       <div class="pr-name">
@@ -1340,9 +1287,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="tiling-outdoor_balcony_tiles">
       <div class="pr-name">
@@ -1366,9 +1311,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="tiling-regrouting_only">
       <div class="pr-name">
@@ -1392,9 +1335,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>
   </div>
@@ -1414,7 +1355,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-high" id="painting-interior_walls_2coat">
@@ -1439,9 +1380,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +10%</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span><span class="verdict-note">&#8593; Prices trending up (+10%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="painting-ceiling_painting">
       <div class="pr-name">
@@ -1465,9 +1404,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span><span class="verdict-note">&#8593; Prices trending up (+8%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="painting-full_4room_hdb">
       <div class="pr-name">
@@ -1491,9 +1428,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +12%</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span><span class="verdict-note">&#8593; Prices trending up (+12%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="painting-full_5room_hdb">
       <div class="pr-name">
@@ -1517,9 +1452,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +12%</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span><span class="verdict-note">&#8593; Prices trending up (+12%)</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="painting-feature_wall">
       <div class="pr-name">
@@ -1543,9 +1476,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>
   </div>
@@ -1565,7 +1496,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-high" id="carpentry-built_in_wardrobe">
@@ -1590,9 +1521,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span><span class="verdict-note">&#8593; Prices trending up (+6%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="carpentry-kitchen_cabinet_full">
       <div class="pr-name">
@@ -1616,9 +1545,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +7%</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span><span class="verdict-note">&#8593; Prices trending up (+7%)</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="carpentry-kitchen_cabinet_bottom">
       <div class="pr-name">
@@ -1642,9 +1569,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="carpentry-shoe_cabinet">
       <div class="pr-name">
@@ -1668,9 +1593,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="carpentry-tv_console">
       <div class="pr-name">
@@ -1694,9 +1617,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="carpentry-study_desk">
       <div class="pr-name">
@@ -1720,9 +1641,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="carpentry-feature_shelving">
       <div class="pr-name">
@@ -1746,9 +1665,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>
   </div>
@@ -1768,7 +1685,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="false_ceiling-gypsum_ceiling">
@@ -1793,9 +1710,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="false_ceiling-l_box_cove">
       <div class="pr-name">
@@ -1819,9 +1734,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="false_ceiling-cove_with_led">
       <div class="pr-name">
@@ -1845,9 +1758,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="false_ceiling-recessed_cutout">
       <div class="pr-name">
@@ -1871,9 +1782,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>
   </div>
@@ -1893,7 +1802,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="flooring-vinyl_planks">
@@ -1918,9 +1827,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +9%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+9%)</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="flooring-laminate_flooring">
       <div class="pr-name">
@@ -1944,9 +1851,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="flooring-engineered_timber">
       <div class="pr-name">
@@ -1970,9 +1875,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="flooring-solid_timber">
       <div class="pr-name">
@@ -1996,9 +1899,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span><span class="verdict-note">&#8593; Prices trending up (+5%)</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="flooring-epoxy_flooring">
       <div class="pr-name">
@@ -2022,9 +1923,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>
   </div>
@@ -2044,7 +1943,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="aircon-system_2">
@@ -2069,9 +1968,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+5%)</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="aircon-system_3">
       <div class="pr-name">
@@ -2095,9 +1992,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +5%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+5%)</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="aircon-system_4">
       <div class="pr-name">
@@ -2121,9 +2016,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+6%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="aircon-gas_top_up">
       <div class="pr-name">
@@ -2147,9 +2040,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="aircon-general_service">
       <div class="pr-name">
@@ -2173,9 +2064,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span><span class="verdict-note">&#8593; Prices trending up (+8%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="aircon-chemical_overhaul">
       <div class="pr-name">
@@ -2199,9 +2088,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span>
       </div>
     </div>
   </div>
@@ -2221,7 +2108,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="bathroom-full_bathroom_hdb">
@@ -2246,9 +2133,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +10%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+10%)</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="bathroom-partial_reno_tiling">
       <div class="pr-name">
@@ -2272,9 +2157,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="bathroom-toilet_bowl">
       <div class="pr-name">
@@ -2298,9 +2181,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="bathroom-vanity_with_basin">
       <div class="pr-name">
@@ -2324,9 +2205,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="bathroom-shower_screen">
       <div class="pr-name">
@@ -2350,9 +2229,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>
   </div>
@@ -2372,7 +2249,7 @@ body{
     <div class="pth-budget">Budget</div>
     <div class="pth-mid">Mid-Range</div>
     <div class="pth-premium">Premium</div>
-    <div class="pth-meta">Trend / Risk / Data</div>
+    <div class="pth-meta">What to watch</div>
   </div>
   <div class="price-rows">
     <div class="price-row risk-row-medium" id="kitchen-full_kitchen_hdb">
@@ -2397,9 +2274,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +8%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+8%)</span>
       </div>
     </div>    <div class="price-row risk-row-high" id="kitchen-kitchen_cabinets_only">
       <div class="pr-name">
@@ -2423,9 +2298,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +6%</span>
-        <span class="meta-risk risk-high">&#9888; Often overcharged</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-high">&#9888; Often overcharged &mdash; get at least 3 quotes</span><span class="verdict-note">&#8593; Prices trending up (+6%)</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="kitchen-countertop_solid_surface">
       <div class="pr-name">
@@ -2449,9 +2322,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="kitchen-countertop_quartz">
       <div class="pr-name">
@@ -2475,9 +2346,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-up">&#8593; Prices rising +4%</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span><span class="verdict-note">&#8593; Prices trending up (+4%)</span>
       </div>
     </div>    <div class="price-row risk-row-low" id="kitchen-countertop_marble">
       <div class="pr-name">
@@ -2501,9 +2370,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-low">&#10003; Usually fair</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-low">&#10003; Usually priced fairly</span>
       </div>
     </div>    <div class="price-row risk-row-medium" id="kitchen-kitchen_hood_hob">
       <div class="pr-name">
@@ -2527,9 +2394,7 @@ body{
         <div class="tier-sub">ID Firm</div>
       </div>
       <div class="pr-meta">
-        <span class="meta-trend trend-stable">Prices holding steady</span>
-        <span class="meta-risk risk-med">Worth checking</span>
-        <span class="meta-conf">Starting estimate</span>
+        <span class="verdict verdict-med">Double-check this item in your quote</span>
       </div>
     </div>
   </div>
