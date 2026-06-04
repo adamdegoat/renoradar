@@ -59,6 +59,7 @@ body{
 .brand-mark{
   display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;flex:none
 }
+.brand-logo{flex:none;filter:drop-shadow(0 1px 3px rgba(194,65,12,.2))}
 .brand-name{
   font-weight:700;font-size:18px;
   color:var(--accent);letter-spacing:-.3px;line-height:1
@@ -79,10 +80,17 @@ body{
 /* ── HERO ── */
 .hero{
   max-width:1280px;margin:0 auto;
-  padding:28px 24px 0
+  padding:28px 24px 20px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(150deg,rgba(254,248,241,1) 0%,var(--bg) 55%)
 }
+.hero-radar-bg{
+  position:absolute;top:-60px;right:-60px;
+  opacity:.055;pointer-events:none;z-index:0
+}
+.hero-top,.hero-sub,.hero-stats{position:relative;z-index:1}
 .hero-top{
-  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px
 }
 .hero-title{
   font-weight:700;font-size:clamp(20px,3vw,28px);
@@ -90,18 +98,22 @@ body{
 }
 .hero-title span{color:var(--accent)}
 .hero-sub{
-  font-size:13px;color:var(--muted);max-width:720px;margin-bottom:12px;line-height:1.55
+  font-size:13px;color:var(--muted);max-width:720px;margin-bottom:16px;line-height:1.55
 }
 .hero-sub b{color:var(--ink);font-weight:600}
-.hero-stats{display:flex;gap:0;flex-wrap:wrap;margin-bottom:0}
-.hstat{
-  display:flex;align-items:baseline;gap:5px;
-  padding:6px 16px;border-right:1px solid var(--line)
+.hero-stats{
+  display:inline-flex;gap:0;flex-wrap:wrap;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 1px 6px rgba(0,0,0,.05)
 }
-.hstat:first-child{padding-left:0}
+.hstat{
+  display:flex;flex-direction:column;gap:2px;
+  padding:10px 20px;border-right:1px solid var(--line)
+}
 .hstat:last-child{border-right:none}
-.hstat-val{font-weight:700;font-size:18px;color:var(--accent);letter-spacing:-.3px}
-.hstat-label{font-size:11px;color:var(--dim)}
+.hstat-val{font-weight:800;font-size:22px;color:var(--accent);letter-spacing:-.5px;line-height:1}
+.hstat-label{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
 
 /* ── HOW TO USE STRIP ── */
 .how-strip{
@@ -119,10 +131,11 @@ body{
 }
 .how-step:last-child{border-right:none}
 .how-num{
-  width:18px;height:18px;border-radius:4px;
-  background:var(--accent-dim);border:1px solid rgba(194,65,12,.2);
-  font-size:9px;font-weight:700;color:var(--accent);
-  display:grid;place-items:center;flex:none;margin-top:1px
+  width:26px;height:26px;border-radius:50%;
+  background:var(--accent);border:none;
+  font-size:11px;font-weight:700;color:#fff;
+  display:grid;place-items:center;flex:none;margin-top:1px;
+  box-shadow:0 2px 6px rgba(194,65,12,.3)
 }
 .how-text{font-size:11.5px;color:var(--muted);line-height:1.45}
 .how-text b{color:var(--ink);font-weight:600}
@@ -450,12 +463,12 @@ body{
   .how-inner{grid-template-columns:1fr}
   .how-step{border-right:none;border-bottom:1px solid var(--line)}
   .how-step:last-child{border-bottom:none}
-  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:0}
-  .hstat{padding:6px 12px;border-right:1px solid var(--line)}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .hstat{padding:10px 14px;border-right:1px solid var(--line)}
   .hstat:nth-child(2){border-right:none}
   .hstat:nth-child(3){border-top:1px solid var(--line);border-right:1px solid var(--line)}
   .hstat:nth-child(4){border-top:1px solid var(--line);border-right:none}
-  .hstat-val{font-size:16px}
+  .hstat-val{font-size:18px}
   .budget-table{font-size:11px}
   .h-pill-count{display:none}
 }
@@ -466,6 +479,15 @@ body{
 <header class="site-header">
   <div class="header-inner">
     <a class="brand-mark" href="https://adamdegoat.github.io/renoradar/">
+      <svg class="brand-logo" width="34" height="34" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="19" stroke="#c2410c" stroke-width="1.4" opacity="0.28"/>
+        <circle cx="22" cy="22" r="12.5" stroke="#c2410c" stroke-width="1.4" opacity="0.55"/>
+        <circle cx="22" cy="22" r="6" stroke="#c2410c" stroke-width="1.4" opacity="0.85"/>
+        <path d="M22 22 L37 8" stroke="#c2410c" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="22" cy="22" r="2.4" fill="#c2410c"/>
+        <circle cx="34.5" cy="10.5" r="2" fill="#c2410c" opacity="0.8"/>
+        <circle cx="14" cy="15" r="1.3" fill="#c2410c" opacity="0.5"/>
+      </svg>
       <div class="brand-text">
         <span class="brand-name">RenoRadar</span>
         <span class="brand-tag">SG Renovation Price Index</span>
@@ -481,6 +503,21 @@ body{
 </header>
 
 <div class="hero">
+  <svg class="hero-radar-bg" width="380" height="380" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="47" stroke="#c2410c" stroke-width="0.5" fill="none"/>
+    <circle cx="50" cy="50" r="36" stroke="#c2410c" stroke-width="0.5" fill="none"/>
+    <circle cx="50" cy="50" r="25" stroke="#c2410c" stroke-width="0.5" fill="none"/>
+    <circle cx="50" cy="50" r="13" stroke="#c2410c" stroke-width="0.5" fill="none"/>
+    <line x1="50" y1="3" x2="50" y2="97" stroke="#c2410c" stroke-width="0.3" opacity="0.7"/>
+    <line x1="3" y1="50" x2="97" y2="50" stroke="#c2410c" stroke-width="0.3" opacity="0.7"/>
+    <line x1="17" y1="17" x2="83" y2="83" stroke="#c2410c" stroke-width="0.25" opacity="0.5"/>
+    <line x1="83" y1="17" x2="17" y2="83" stroke="#c2410c" stroke-width="0.25" opacity="0.5"/>
+    <path d="M50 50 L87 16 A 47 47 0 0 0 50 3 Z" fill="#c2410c" opacity="0.14"/>
+    <circle cx="72" cy="24" r="2.2" fill="#c2410c" opacity="0.9"/>
+    <circle cx="36" cy="30" r="1.5" fill="#c2410c" opacity="0.6"/>
+    <circle cx="78" cy="48" r="1.2" fill="#c2410c" opacity="0.5"/>
+    <circle cx="58" cy="62" r="1" fill="#c2410c" opacity="0.4"/>
+  </svg>
   <div class="hero-top">
     <h1 class="hero-title">Know the <span>real price</span> before you sign anything.</h1>
   </div>
