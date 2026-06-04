@@ -74,6 +74,13 @@ body{
   color:var(--muted);background:var(--surface2)
 }
 .h-pill.live{color:var(--green);border-color:rgba(21,128,61,.3);background:var(--green-dim)}
+.lang-btn{
+  font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;
+  border:1px solid var(--accent);color:var(--accent);background:transparent;
+  cursor:pointer;transition:background .15s,color .15s;white-space:nowrap
+}
+.lang-btn:hover{background:var(--accent);color:#fff}
+.lang-btn.zh-active{background:var(--accent);color:#fff}
 .live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px;animation:pulse 2s infinite;vertical-align:middle}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(21,128,61,.5)}70%{box-shadow:0 0 0 6px rgba(21,128,61,0)}100%{box-shadow:0 0 0 0 rgba(21,128,61,0)}}
 
@@ -500,9 +507,11 @@ body{
       <span class="h-pill">Updated 4 Jun 2026</span>
       <span class="h-pill h-pill-count">64 items</span>
       <span class="h-pill h-pill-count">6 patterns</span>
+      <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">中文</button>
     </div>
   </div>
 </header>
+<div id="google_translate_element" style="display:none"></div>
 
 <div class="hero">
   <svg class="hero-radar-bg" width="380" height="380" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -2695,7 +2704,35 @@ function showCat(key) {
 document.addEventListener('DOMContentLoaded', function() {
   showCat('electrical');
 });
+
+var _gtReady = false;
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'zh-CN',
+    autoDisplay: false
+  }, 'google_translate_element');
+  _gtReady = true;
+}
+function toggleLang() {
+  var btn = document.getElementById('lang-toggle');
+  if (!_gtReady) return;
+  var sel = document.querySelector('#google_translate_element select');
+  if (!sel) return;
+  if (btn.classList.contains('zh-active')) {
+    sel.value = '';
+    sel.dispatchEvent(new Event('change'));
+    btn.classList.remove('zh-active');
+    btn.textContent = '中文';
+  } else {
+    sel.value = 'zh-CN';
+    sel.dispatchEvent(new Event('change'));
+    btn.classList.add('zh-active');
+    btn.textContent = 'EN';
+  }
+}
 </script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
