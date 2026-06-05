@@ -1,0 +1,141 @@
+{
+  "last_updated": "5 Jun 2026",
+  "items": {
+    "power_point_13a": {
+      "name": "Additional Power Point (13A)",
+      "unit": "per point",
+      "tier_budget": {
+        "min": 65,
+        "max": 90
+      },
+      "tier_mid": {
+        "min": 90,
+        "max": 130
+      },
+      "tier_premium": {
+        "min": 130,
+        "max": 180
+      },
+      "market_avg": 105
+    },
+    "five_pin_socket": {
+      "name": "5-Pin Socket Point",
+      "unit": "per point",
+      "tier_budget": {
+        "min": 80,
+        "max": 110
+      },
+      "tier_mid": {
+        "min": 110,
+        "max": 155
+      },
+      "tier_premium": {
+        "min": 155,
+        "max": 220
+      },
+      "market_avg": 125
+    },
+    "lighting_point": {
+      "name": "Lighting Point",
+      "unit": "per point",
+      "tier_budget": {
+        "min": 55,
+        "max": 80
+      },
+      "tier_mid": {
+        "min": 80,
+        "max": 120
+      },
+      "tier_premium": {
+        "min": 120,
+        "max": 165
+      },
+      "market_avg": 98
+    },
+    "ceiling_fan_point": {
+      "name": "Ceiling Fan Point",
+      "unit": "per point",
+      "tier_budget": {
+        "min": 70,
+        "max": 95
+      },
+      "tier_mid": {
+        "min": 95,
+        "max": 135
+      },
+      "tier_premium": {
+        "min": 135,
+        "max": 185
+      },
+      "market_avg": 110
+    },
+    "aircon_dedicated_circuit": {
+      "name": "Dedicated Aircon Circuit",
+      "unit": "per circuit",
+      "tier_budget": {
+        "min": 160,
+        "max": 220
+      },
+      "tier_mid": {
+        "min": 220,
+        "max": 290
+      },
+      "tier_premium": {
+        "min": 290,
+        "max": 400
+      },
+      "market_avg": 245
+    },
+    "db_box_10way": {
+      "name": "DB Box Upgrade (10-way)",
+      "unit": "per box",
+      "tier_budget": {
+        "min": 350,
+        "max": 520
+      },
+      "tier_mid": {
+        "min": 520,
+        "max": 720
+      },
+      "tier_premium": {
+        "min": 720,
+        "max": 980
+      },
+      "market_avg": 590
+    },
+    "db_box_20way": {
+      "name": "DB Box Upgrade (20-way)",
+      "unit": "per box",
+      "tier_budget": {
+        "min": 600,
+        "max": 820
+      },
+      "tier_mid": {
+        "min": 820,
+        "max": 1100
+      },
+      "tier_premium": {
+        "min": 1100,
+        "max": 1500
+      },
+      "market_avg": 900
+    },
+    "switch_single": {
+      "name": "Switch Replacement (single)",
+      "unit": "per switch",
+      "tier_budget": {
+        "min": 25,
+        "max": 45
+      },
+      "tier_mid": {
+        "min": 45,
+        "max": 80
+      },
+      "tier_premium": {
+        "min": 80,
+        "max": 160
+      },
+      "market_avg": 65
+    }
+  }
+}
